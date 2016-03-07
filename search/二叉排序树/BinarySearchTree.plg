@@ -1,0 +1,32 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: BinarySearchTree - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Yoga\AppData\Local\Temp\RSP4FCB.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/BinarySearchTree.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\VC6.0\test\数据结构篇\查找\二叉排序树\BinarySearchTree.cpp"
+]
+Creating command line "cl.exe @C:\Users\Yoga\AppData\Local\Temp\RSP4FCB.tmp" 
+Creating temporary file "C:\Users\Yoga\AppData\Local\Temp\RSP4FCC.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/BinarySearchTree.pdb" /debug /machine:I386 /out:"Debug/BinarySearchTree.exe" /pdbtype:sept 
+".\Debug\BinarySearchTree.obj"
+]
+Creating command line "link.exe @C:\Users\Yoga\AppData\Local\Temp\RSP4FCC.tmp"
+<h3>Output Window</h3>
+Compiling...
+BinarySearchTree.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+BinarySearchTree.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
