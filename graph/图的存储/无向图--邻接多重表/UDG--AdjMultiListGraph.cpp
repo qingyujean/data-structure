@@ -1,69 +1,69 @@
 #include<stdio.h>
 #include<stdlib.h>
 /*
-Í¼µÄ±íÊ¾·½·¨
-DG£¨ÓĞÏòÍ¼£©»òÕßDN£¨ÓĞÏòÍø£©£ºÁÚ½Ó¾ØÕó¡¢ÁÚ½Ó±í£¨ÄæÁÚ½Ó±í--ÎªÇóÈë¶È£©¡¢Ê®×ÖÁ´±í
-UDG£¨ÎŞÏòÍ¼£©»òÕßUDN£¨ÎŞÏòÍø£©£ºÁÚ½Ó¾ØÕó¡¢ÁÚ½Ó±í¡¢ÁÚ½Ó¶àÖØ±í
+å›¾çš„è¡¨ç¤ºæ–¹æ³•
+DGï¼ˆæœ‰å‘å›¾ï¼‰æˆ–è€…DNï¼ˆæœ‰å‘ç½‘ï¼‰ï¼šé‚»æ¥çŸ©é˜µã€é‚»æ¥è¡¨ï¼ˆé€†é‚»æ¥è¡¨--ä¸ºæ±‚å…¥åº¦ï¼‰ã€åå­—é“¾è¡¨
+UDGï¼ˆæ— å‘å›¾ï¼‰æˆ–è€…UDNï¼ˆæ— å‘ç½‘ï¼‰ï¼šé‚»æ¥çŸ©é˜µã€é‚»æ¥è¡¨ã€é‚»æ¥å¤šé‡è¡¨
 */
-#define MAX_VERTEX_NUM 10//×î´ó¶¥µãÊıÄ¿
+#define MAX_VERTEX_NUM 10//æœ€å¤§é¡¶ç‚¹æ•°ç›®
 #define NULL 0
-//typedef int VRType;//¶ÔÓÚ´øÈ¨Í¼»òÍø£¬ÔòÎªÏàÓ¦È¨Öµ
-typedef int VertexType;//¶¥µãÀàĞÍ
-//typedef enum GraphKind {DG, DN, UDG, UDN};  //ÓĞÏòÍ¼£º0£¬ÓĞÏòÍø£º1£¬ÎŞÏòÍ¼£º2£¬ÎŞÏò
+//typedef int VRType;//å¯¹äºå¸¦æƒå›¾æˆ–ç½‘ï¼Œåˆ™ä¸ºç›¸åº”æƒå€¼
+typedef int VertexType;//é¡¶ç‚¹ç±»å‹
+//typedef enum GraphKind {DG, DN, UDG, UDN};  //æœ‰å‘å›¾ï¼š0ï¼Œæœ‰å‘ç½‘ï¼š1ï¼Œæ— å‘å›¾ï¼š2ï¼Œæ— å‘
 
 typedef struct ArcNode{	
-	int ivex, jvex;//¸Ã±ßËùÒÀ¸½µÄ2¸ö¶¥µãµÄÔÚÍ¼ÖĞÎ»ÖÃ
-	struct ArcNode *ivexNextarc, *jvexNextarc;//·Ö±ğÖ¸Ïò¸Ã±ßËùÒÀ¸½µÄÁ½¸ö¶¥µãÏÂÒ»Ìõ±ß
-}ArcNode;//»¡½áµãĞÅÏ¢
+	int ivex, jvex;//è¯¥è¾¹æ‰€ä¾é™„çš„2ä¸ªé¡¶ç‚¹çš„åœ¨å›¾ä¸­ä½ç½®
+	struct ArcNode *ivexNextarc, *jvexNextarc;//åˆ†åˆ«æŒ‡å‘è¯¥è¾¹æ‰€ä¾é™„çš„ä¸¤ä¸ªé¡¶ç‚¹ä¸‹ä¸€æ¡è¾¹
+}ArcNode;//å¼§ç»“ç‚¹ä¿¡æ¯
 
 typedef struct VNode{
-	VertexType data;//¶¥µãĞÅÏ¢
-	ArcNode *firstedge;//Ö¸ÏòµÚÒ»ÌõÒÀ¸½¸Ã¶¥µãµÄ»¡µÄÖ¸Õë
-}VNode, AdjMuitiVexList[MAX_VERTEX_NUM];//¶¥µã½áµãĞÅÏ¢
+	VertexType data;//é¡¶ç‚¹ä¿¡æ¯
+	ArcNode *firstedge;//æŒ‡å‘ç¬¬ä¸€æ¡ä¾é™„è¯¥é¡¶ç‚¹çš„å¼§çš„æŒ‡é’ˆ
+}VNode, AdjMuitiVexList[MAX_VERTEX_NUM];//é¡¶ç‚¹ç»“ç‚¹ä¿¡æ¯
 
 typedef struct{
-	AdjMuitiVexList vexs;//¶¥µãÏòÁ¿
-	int vexnum, arcnum;//Í¼µÄµ±Ç°¶¥µãÊıºÍ»¡Êı
-	//GraphKind kind;//Í¼µÄÖÖÀà±êÖ¾
-}AMLGraph;//ÁÚ½Ó±í±íÊ¾µÄÍ¼
+	AdjMuitiVexList vexs;//é¡¶ç‚¹å‘é‡
+	int vexnum, arcnum;//å›¾çš„å½“å‰é¡¶ç‚¹æ•°å’Œå¼§æ•°
+	//GraphKind kind;//å›¾çš„ç§ç±»æ ‡å¿—
+}AMLGraph;//é‚»æ¥è¡¨è¡¨ç¤ºçš„å›¾
 
 
-//ÈôÍ¼GÖĞ´æÔÚ¶¥µãv£¬Ôò·µ»ØvÔÚÍ¼ÖĞµÄÎ»ÖÃĞÅÏ¢£¬·ñÔò·µ»ØÆäËûĞÅÏ¢
+//è‹¥å›¾Gä¸­å­˜åœ¨é¡¶ç‚¹vï¼Œåˆ™è¿”å›våœ¨å›¾ä¸­çš„ä½ç½®ä¿¡æ¯ï¼Œå¦åˆ™è¿”å›å…¶ä»–ä¿¡æ¯
 int locateVex(AMLGraph G, VertexType v){
 	for(int i = 0; i < G.vexnum; i++){
 		if(G.vexs[i].data == v)
 			return i;
 	}
-	return -1;//Í¼ÖĞÃ»ÓĞ¸Ã¶¥µã
+	return -1;//å›¾ä¸­æ²¡æœ‰è¯¥é¡¶ç‚¹
 }
 
-//²ÉÓÃÁÚ½Ó¶àÖØ±í±íÊ¾·¨¹¹ÔìÎŞÏòÍ¼G
+//é‡‡ç”¨é‚»æ¥å¤šé‡è¡¨è¡¨ç¤ºæ³•æ„é€ æ— å‘å›¾G
 void createUDG(AMLGraph &G){
-	printf("ÊäÈë¶¥µãÊıºÍ»¡ÊıÈç:(5,3):");
+	printf("è¾“å…¥é¡¶ç‚¹æ•°å’Œå¼§æ•°å¦‚:(5,3):");
 	scanf("%d,%d", &G.vexnum, &G.arcnum);
 
-	//¹¹Ôì¶¥µãÏòÁ¿,²¢³õÊ¼»¯
-	printf("ÊäÈë%d¸ö¶¥µã£¨ÒÔ¿Õ¸ñ¸ô¿ªÈç£ºv1 v2 v3£©:", G.vexnum);
-	getchar();//³Ôµô»»ĞĞ·û
+	//æ„é€ é¡¶ç‚¹å‘é‡,å¹¶åˆå§‹åŒ–
+	printf("è¾“å…¥%dä¸ªé¡¶ç‚¹ï¼ˆä»¥ç©ºæ ¼éš”å¼€å¦‚ï¼šv1 v2 v3ï¼‰:", G.vexnum);
+	getchar();//åƒæ‰æ¢è¡Œç¬¦
 	for(int m = 0; m < G.vexnum; m++){
 		scanf("v%d", &G.vexs[m].data);
-		G.vexs[m].firstedge = NULL;//³õÊ¼»¯Îª¿ÕÖ¸Õë////////////////ÖØÒª£¡£¡£¡
-		getchar();//³Ôµô¿Õ¸ñ·û
+		G.vexs[m].firstedge = NULL;//åˆå§‹åŒ–ä¸ºç©ºæŒ‡é’ˆ////////////////é‡è¦ï¼ï¼ï¼
+		getchar();//åƒæ‰ç©ºæ ¼ç¬¦
 	}
 
-	//¹¹ÔìÁÚ½Ó¶àÖØ±í
-	VertexType v1, v2;//·Ö±ğÊÇÒ»ÌõµÄÁ½¸ö¶¥µã
-	printf("\nÃ¿ĞĞÊäÈëÒ»Ìõ±ßÒÀ¸½µÄ¶¥µã£¨Èç£ºv1v2£©:\n");
-	fflush(stdin);//Çå³ı²ĞÓàºó£¬ºóÃæÔÙ¶ÁÈëÊ±²»»á³ö´í
+	//æ„é€ é‚»æ¥å¤šé‡è¡¨
+	VertexType v1, v2;//åˆ†åˆ«æ˜¯ä¸€æ¡çš„ä¸¤ä¸ªé¡¶ç‚¹
+	printf("\næ¯è¡Œè¾“å…¥ä¸€æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹ï¼ˆå¦‚ï¼šv1v2ï¼‰:\n");
+	fflush(stdin);//æ¸…é™¤æ®‹ä½™åï¼Œåé¢å†è¯»å…¥æ—¶ä¸ä¼šå‡ºé”™
 	int i = 0, j = 0;
 	for(int k = 0; k < G.arcnum; k++){
 		scanf("v%dv%d",&v1, &v2);
-		fflush(stdin);//Çå³ı²ĞÓàºó£¬ºóÃæÔÙ¶ÁÈëÊ±²»»á³ö´í
-		i = locateVex(G, v1);//±ßÒÀ¸½µÄÁ½¸ö¶¥µãµÄÔÚÍ¼ÖĞµÄÎ»ÖÃ
+		fflush(stdin);//æ¸…é™¤æ®‹ä½™åï¼Œåé¢å†è¯»å…¥æ—¶ä¸ä¼šå‡ºé”™
+		i = locateVex(G, v1);//è¾¹ä¾é™„çš„ä¸¤ä¸ªé¡¶ç‚¹çš„åœ¨å›¾ä¸­çš„ä½ç½®
 		j = locateVex(G, v2);
 		
-		//²ÉÓÃ¡°Í·²å·¨¡±ÔÚ¸÷¸ö¶¥µãµÄ±ßÁ´Í·²¿²åÈë±ß½áµã
-		ArcNode *p = (ArcNode *)malloc(sizeof(ArcNode));//¹¹ÔìÒ»¸ö±ß½áµã£¬ËüÒÀ¸½ÓÚvivjÁ½¸ö¶¥µã
+		//é‡‡ç”¨â€œå¤´æ’æ³•â€åœ¨å„ä¸ªé¡¶ç‚¹çš„è¾¹é“¾å¤´éƒ¨æ’å…¥è¾¹ç»“ç‚¹
+		ArcNode *p = (ArcNode *)malloc(sizeof(ArcNode));//æ„é€ ä¸€ä¸ªè¾¹ç»“ç‚¹ï¼Œå®ƒä¾é™„äºvivjä¸¤ä¸ªé¡¶ç‚¹
 		p->ivex = i;
 		p->ivexNextarc = G.vexs[i].firstedge;
 		G.vexs[i].firstedge = p;
@@ -73,11 +73,11 @@ void createUDG(AMLGraph &G){
 	}
 }
 
-//´òÓ¡ÁÚ½Ó¶àÖØ±í
+//æ‰“å°é‚»æ¥å¤šé‡è¡¨
 void printAdjMultiList(AMLGraph G){
 	printf("\n");
 	for(int i = 0; i < G.vexnum; i++){
-		printf("ÒÀ¸½¶¥µãv%dµÄ±ßÎª£º", G.vexs[i].data);
+		printf("ä¾é™„é¡¶ç‚¹v%dçš„è¾¹ä¸ºï¼š", G.vexs[i].data);
 		ArcNode *p = G.vexs[i].firstedge;
 
 		while(p){
@@ -96,7 +96,7 @@ void printAdjMultiList(AMLGraph G){
 
 
 /*
-²âÊÔ£º
+æµ‹è¯•ï¼š
 4,3
 v1 v2 v3 v4
 
@@ -104,8 +104,10 @@ v1 v2 v3 v4
   v1v3
   v2v4
 */
-void main(){
+int main(){
 	AMLGraph G;
 	createUDG(G);
 	printAdjMultiList(G);
+
+	return 0;
 }
