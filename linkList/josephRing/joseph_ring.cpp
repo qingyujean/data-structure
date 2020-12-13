@@ -85,6 +85,5 @@ int main(){
 	printCircularList(L);
 
 	josephRing(L, 20, 7);
-
 	return 0;
 }
