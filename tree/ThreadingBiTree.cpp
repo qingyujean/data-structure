@@ -112,7 +112,8 @@ void createBiTreeByPreOrder(ThrBiTree &T){
 		}
 	}
 }
-void main(){
+
+int main(){
 	ThrBiTree T;
 	printf("请按先序次序输入二叉树各节点的值，以空格表示空树，以#号结束:\n");
 	createBiTreeByPreOrder(T);//建立二叉树
@@ -122,4 +123,6 @@ void main(){
 
 	inOrderTraversePrint(Thrt);//中序遍历二叉线索树（通过线索链表，就像访问线性表一样）
 	//当然之前的不按线索，直接根据二叉树的结构进行遍历依然可以（层次、先序、后序、中序）
+
+	return 0;
 }
