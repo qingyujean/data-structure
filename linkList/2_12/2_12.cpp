@@ -148,7 +148,7 @@ void unionList(LinkList &La, LinkList &Lb){
 	pc->next = pa?pa:pb;//插入剩余段
 	free(Lb);//释放Lb的头节点
 }
-void main(){  	
+int main(){  	
 	LinkList L;
 	createList(L, 5);//初始化并创建一个线性单链表
 	printList(L);	
@@ -199,4 +199,5 @@ void main(){
     unionList(La, Lb);  
     printList(La); 
 	*/
+	return 0;
 }
