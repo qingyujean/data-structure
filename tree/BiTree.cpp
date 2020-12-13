@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #define NULL 0
 typedef char TElemType;
-//¶¯Ì¬¶ş²æÁ´±í
+//åŠ¨æ€äºŒå‰é“¾è¡¨
 typedef struct BiTNode{
 	TElemType data;
 	struct BiTNode *lchild, *rchild;
@@ -10,30 +10,30 @@ typedef struct BiTNode{
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Õ»µÄÏà¹ØÊµÏÖ
+//æ ˆçš„ç›¸å…³å®ç°
 #define MAXSIZE 100
 typedef BiTNode* SElemType;
 typedef struct SqStack{
 	SElemType data[MAXSIZE];
-	int top;//Ö¸ÏòÕ»¶¥ÔªËØ
+	int top;//æŒ‡å‘æ ˆé¡¶å…ƒç´ 
 }SqStack;
 
-//³õÊ¼»¯¿ÕÕ»
+//åˆå§‹åŒ–ç©ºæ ˆ
 void initStack(SqStack &s){
 	s.top = 0;
 }
 
-//ÅĞÕ»¿Õ
+//åˆ¤æ ˆç©º
 bool isEmpty(SqStack s){
 	if(s.top == 0){
-		//printf("ÊÇ¿ÕÕ»\n");//
+		//printf("æ˜¯ç©ºæ ˆ\n");//
 		return true;
 	}else{
 		return false;
 	}
 }
 
-//ÅĞÕ»Âú
+//åˆ¤æ ˆæ»¡
 bool isFull(SqStack s){
 	if(s.top == MAXSIZE){
 		return true;
@@ -43,41 +43,41 @@ bool isFull(SqStack s){
 	}
 }
 
-//È¡Õ»¶¥ÔªËØ
+//å–æ ˆé¡¶å…ƒç´ 
 void getTopElem(SqStack s, SElemType &e){
 	if(!isEmpty(s))
 		e = s.data[s.top-1];
 	else
-		printf("´ËÕ»Îª¿ÕÕ»£¬È¡Õ»¶¥ÔªËØÊ§°Ü\n");
+		printf("æ­¤æ ˆä¸ºç©ºæ ˆï¼Œå–æ ˆé¡¶å…ƒç´ å¤±è´¥\n");
 }
 
-//ÈëÕ»
+//å…¥æ ˆ
 void push(SqStack &s, SElemType e){
 	if(!isFull(s)){
 		s.data[s.top] = e;
 		s.top++;
 	}else
-		printf("´ËÕ»ÒÑÂú£¬ÈëÕ»²Ù×÷Ê§°Ü\n");
+		printf("æ­¤æ ˆå·²æ»¡ï¼Œå…¥æ ˆæ“ä½œå¤±è´¥\n");
 }
 
-//³öÕ»
+//å‡ºæ ˆ
 void pop(SqStack &s, SElemType &e){
 	if(!isEmpty(s)){
 		e = s.data[s.top-1];
 		s.top--;
 	}
 	else
-		printf("´ËÕ»Îª¿ÕÕ»£¬³öÕ»²Ù×÷Ê§°Ü\n");
+		printf("æ­¤æ ˆä¸ºç©ºæ ˆï¼Œå‡ºæ ˆæ“ä½œå¤±è´¥\n");
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//ÀûÓÃÏÈĞòĞòÁĞ½¨Á¢Ò»¿Å¶ş²æÊ÷£¬ÏÈĞòĞòÁĞ¶ÁÈë£º'a', 'b', 'c', '.', '.', 'd', 'e', '.', 'g', '.', '.', 'f', '.', '.', '.' 
-//,'.'´ú±í¿ÕÊ÷
-//²âÊÔÓÃÀı£ºabc..de.g..f...#
+//åˆ©ç”¨å…ˆåºåºåˆ—å»ºç«‹ä¸€é¢—äºŒå‰æ ‘ï¼Œå…ˆåºåºåˆ—è¯»å…¥ï¼š'a', 'b', 'c', '.', '.', 'd', 'e', '.', 'g', '.', '.', 'f', '.', '.', '.' 
+//,'.'ä»£è¡¨ç©ºæ ‘
+//æµ‹è¯•ç”¨ä¾‹ï¼šabc..de.g..f...#
 void createBiTreeByPreOrder(BiTree &T){
-	//°´ÏÈĞò´ÎĞòÊäÈë¶ş²æÊ÷ÖĞ½ÚµãµÄÖµ£¨Ò»¸ö×Ö·û£©£¬µãºÅ×Ö·û±íÊ¾¿ÕÊ÷£¬¹¹Ôì¶ş²æÁ´±í±íÊ¾µÄ¶ş²æÊ÷
-	//×¢Òâ£ºÈôÊäÈëµÄ×Ö·ûÊı£¨²»º¬#ºÅ£©Îªn¸ö£¬ÔòÏàÓ¦µÄ¿ÕÊ÷¼´µãºÅ¾ÍÓ¦¸ÃÓĞn+1¸ö
+	//æŒ‰å…ˆåºæ¬¡åºè¾“å…¥äºŒå‰æ ‘ä¸­èŠ‚ç‚¹çš„å€¼ï¼ˆä¸€ä¸ªå­—ç¬¦ï¼‰ï¼Œç‚¹å·å­—ç¬¦è¡¨ç¤ºç©ºæ ‘ï¼Œæ„é€ äºŒå‰é“¾è¡¨è¡¨ç¤ºçš„äºŒå‰æ ‘
+	//æ³¨æ„ï¼šè‹¥è¾“å…¥çš„å­—ç¬¦æ•°ï¼ˆä¸å«#å·ï¼‰ä¸ºnä¸ªï¼Œåˆ™ç›¸åº”çš„ç©ºæ ‘å³ç‚¹å·å°±åº”è¯¥æœ‰n+1ä¸ª
 	char ch;
 	scanf("%c", &ch);
 	//printf("test:%c\n", ch);
@@ -93,7 +93,7 @@ void createBiTreeByPreOrder(BiTree &T){
 	}
 }
 
-//ÏÈĞò±éÀú´òÓ¡¶ş²æÊ÷µÄµİ¹éËã·¨(¸ù¡¢×ó¡¢ÓÒ)
+//å…ˆåºéå†æ‰“å°äºŒå‰æ ‘çš„é€’å½’ç®—æ³•(æ ¹ã€å·¦ã€å³)
 void preOrderPrint(BiTree T){
 	if(T){
 		printf("%c ", T->data);
@@ -102,7 +102,7 @@ void preOrderPrint(BiTree T){
 	}
 }
 
-//ÏÈĞò±éÀú´òÓ¡¶ş²æÊ÷µÄ·Çµİ¹éËã·¨(¸ù¡¢×ó¡¢ÓÒ)
+//å…ˆåºéå†æ‰“å°äºŒå‰æ ‘çš„éé€’å½’ç®—æ³•(æ ¹ã€å·¦ã€å³)
 void preOrderPrint2(BiTree T){
 	SqStack s;
 	initStack(s);
@@ -114,13 +114,13 @@ void preOrderPrint2(BiTree T){
 			p = p->lchild;
 		}else{
 			//printStack(s);
-			pop(s, p);//Õ»¶¥Ö¸Õë£¨µ±Ç°²ãµÄ¸ù½ÚµãÖ¸Õë£©µ¯³ö
+			pop(s, p);//æ ˆé¡¶æŒ‡é’ˆï¼ˆå½“å‰å±‚çš„æ ¹èŠ‚ç‚¹æŒ‡é’ˆï¼‰å¼¹å‡º
 			p = p->rchild;
 		}
 	}
 }
 
-//ÖĞĞò±éÀú´òÓ¡¶ş²æÊ÷µÄµİ¹éËã·¨£¨×ó¡¢¸ù¡¢ÓÒ£©
+//ä¸­åºéå†æ‰“å°äºŒå‰æ ‘çš„é€’å½’ç®—æ³•ï¼ˆå·¦ã€æ ¹ã€å³ï¼‰
 void inOrderPrint(BiTree T){
 	if(T){
 		inOrderPrint(T->lchild);
@@ -128,7 +128,7 @@ void inOrderPrint(BiTree T){
 		inOrderPrint(T->rchild);
 	}
 }
-//ÖĞĞò±éÀú´òÓ¡¶ş²æÊ÷µÄ·Çµİ¹éËã·¨£¨×ó¡¢¸ù¡¢ÓÒ£©
+//ä¸­åºéå†æ‰“å°äºŒå‰æ ‘çš„éé€’å½’ç®—æ³•ï¼ˆå·¦ã€æ ¹ã€å³ï¼‰
 void inOrderPrint2(BiTree T){
 	SqStack s;
 	initStack(s);
@@ -138,14 +138,14 @@ void inOrderPrint2(BiTree T){
 			push(s, p);
 			p = p->lchild;
 		}else{
-			pop(s, p);//Õ»¶¥Ö¸Õë£¨µ±Ç°²ãµÄ¸ù½ÚµãÖ¸Õë£©µ¯³ö
+			pop(s, p);//æ ˆé¡¶æŒ‡é’ˆï¼ˆå½“å‰å±‚çš„æ ¹èŠ‚ç‚¹æŒ‡é’ˆï¼‰å¼¹å‡º
 			printf("%c ", p->data);			
 			p = p->rchild;
 		}
 	}
 }
 
-//ºóĞò±éÀú´òÓ¡¶ş²æÊ÷µÄµİ¹éËã·¨£¨×ó¡¢ÓÒ¡¢¸ù£©
+//ååºéå†æ‰“å°äºŒå‰æ ‘çš„é€’å½’ç®—æ³•ï¼ˆå·¦ã€å³ã€æ ¹ï¼‰
 void postOrderPrint(BiTree T){
 	if(T){
 		postOrderPrint(T->lchild);
@@ -154,7 +154,7 @@ void postOrderPrint(BiTree T){
 	}
 }
 
-//ºóĞò±éÀú´òÓ¡¶ş²æÊ÷µÄ·Çµİ¹éËã·¨£¨×ó¡¢ÓÒ¡¢¸ù£©
+//ååºéå†æ‰“å°äºŒå‰æ ‘çš„éé€’å½’ç®—æ³•ï¼ˆå·¦ã€å³ã€æ ¹ï¼‰
 void postOrderPrint2(BiTree T){
 	SqStack s;
 	initStack(s);
@@ -165,12 +165,12 @@ void postOrderPrint2(BiTree T){
 			p = p->lchild;
 		}else{ 
 			BiTNode *top;
-			getTopElem(s, top);//È¡µÃÕ»¶¥ÔªËØ
-			if(top->data > 0){//Õ»¶¥ÔªËØµÄÓÒ×ÓÊ÷»¹Ã»ÓĞ±»·ÃÎÊ¹ı
+			getTopElem(s, top);//å–å¾—æ ˆé¡¶å…ƒç´ 
+			if(top->data > 0){//æ ˆé¡¶å…ƒç´ çš„å³å­æ ‘è¿˜æ²¡æœ‰è¢«è®¿é—®è¿‡
 				p = top->rchild;
-				top->data = -top->data;//¸³ÓÒ×ÓÊ÷ÒÑ±éÀú±êÖ¾
+				top->data = -top->data;//èµ‹å³å­æ ‘å·²éå†æ ‡å¿—
 				
-			}else{//Õ»¶¥ÔªËØµÄÓÒ×ÓÊ÷ÒÑ¾­·ÃÎÊ¹ıÁË
+			}else{//æ ˆé¡¶å…ƒç´ çš„å³å­æ ‘å·²ç»è®¿é—®è¿‡äº†
 				printf("%c ", -top->data);
 				pop(s, top);
 				//p = NULL;				
@@ -182,62 +182,62 @@ void postOrderPrint2(BiTree T){
 typedef BiTNode* QElemType;
 typedef struct{
 	QElemType data[20];
-	int f;//Ö¸Ïò¶ÓÍ·ÔªËØ
-	int r;//Ö¸Ïò¶ÔÎ²ÔªËØµÄÏÂÒ»¸öÎ»ÖÃ
+	int f;//æŒ‡å‘é˜Ÿå¤´å…ƒç´ 
+	int r;//æŒ‡å‘å¯¹å°¾å…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®
 }SqQueue;
-//³õÊ¼»¯Ò»¸ö¿Õ¶ÓÁĞ
+//åˆå§‹åŒ–ä¸€ä¸ªç©ºé˜Ÿåˆ—
 void initQueue(SqQueue &Q){
 	Q.f = Q.r = 0;
 }
 
-//°´²ã´Î±éÀú£¨´ÓÉÏµ½ÏÂ£¬´Ó×óµ½ÓÒ£©£¬
+//æŒ‰å±‚æ¬¡éå†ï¼ˆä»ä¸Šåˆ°ä¸‹ï¼Œä»å·¦åˆ°å³ï¼‰ï¼Œ
 void hierarchicalTraversePrint(BiTree T){
-	//QElemType queue[20];//Î¬»¤Ò»¸öË³Ğò¶ÓÁĞ£¬ÓÃÀ´°´²ã´Î´æ·ÅÃ¿¸öÊµ½Úµã£¬Êµ¼ÊÉÏÊÇÒ»¸ö¹ã¶ÈÓÅÏÈËÑË÷
-	//int f = 0, r = 0;//¶ÓÍ·¶ÓÎ²
-	SqQueue Q;//Î¬»¤Ò»¸öË³Ğò¶ÓÁĞ£¬ÓÃÀ´°´²ã´Î´æ·ÅÃ¿¸öÊµ½Úµã£¬Êµ¼ÊÉÏÊÇÒ»¸ö¹ã¶ÈÓÅÏÈËÑË÷
+	//QElemType queue[20];//ç»´æŠ¤ä¸€ä¸ªé¡ºåºé˜Ÿåˆ—ï¼Œç”¨æ¥æŒ‰å±‚æ¬¡å­˜æ”¾æ¯ä¸ªå®èŠ‚ç‚¹ï¼Œå®é™…ä¸Šæ˜¯ä¸€ä¸ªå¹¿åº¦ä¼˜å…ˆæœç´¢
+	//int f = 0, r = 0;//é˜Ÿå¤´é˜Ÿå°¾
+	SqQueue Q;//ç»´æŠ¤ä¸€ä¸ªé¡ºåºé˜Ÿåˆ—ï¼Œç”¨æ¥æŒ‰å±‚æ¬¡å­˜æ”¾æ¯ä¸ªå®èŠ‚ç‚¹ï¼Œå®é™…ä¸Šæ˜¯ä¸€ä¸ªå¹¿åº¦ä¼˜å…ˆæœç´¢
 	initQueue(Q);
-	//×¢Òâ£¬²»ÄÜĞ´³Éint f, r = 0;·ñÔòfÃ»ÓĞ±»¸³Öµ
+	//æ³¨æ„ï¼Œä¸èƒ½å†™æˆint f, r = 0;å¦åˆ™fæ²¡æœ‰è¢«èµ‹å€¼
 	if(T){
-		//queue[0] = T;//¸ù½ÚµãÈë¶Ó
-		Q.data[Q.r] = T;//¸ù½ÚµãÈë¶Ó
+		//queue[0] = T;//æ ¹èŠ‚ç‚¹å…¥é˜Ÿ
+		Q.data[Q.r] = T;//æ ¹èŠ‚ç‚¹å…¥é˜Ÿ
 		Q.r++;
 	}
 	while(Q.f != Q.r){
-		//ÏÈ½«¶ÓÍ·ÔªËØµÄ×óº¢×ÓÒÀ´ÎÈë¶Ó
+		//å…ˆå°†é˜Ÿå¤´å…ƒç´ çš„å·¦å­©å­ä¾æ¬¡å…¥é˜Ÿ
 		if(Q.data[Q.f]->lchild){
 			Q.data[Q.r] = Q.data[Q.f]->lchild;
 			Q.r++;
 		}
-		//½«¶ÓÍ·ÔªËØµÄÓÒº¢×ÓÒÀ´ÎÈë¶Ó
+		//å°†é˜Ÿå¤´å…ƒç´ çš„å³å­©å­ä¾æ¬¡å…¥é˜Ÿ
 		if(Q.data[Q.f]->rchild){
 			Q.data[Q.r] = Q.data[Q.f]->rchild;
 			Q.r++;
 		}
-		//È»ºó´òÓ¡£¨·ÃÎÊ£©¶ÓÍ·ÔªËØ,²¢½«¶ÓÍ·ÔªËØ³ö¶Ó		
+		//ç„¶åæ‰“å°ï¼ˆè®¿é—®ï¼‰é˜Ÿå¤´å…ƒç´ ,å¹¶å°†é˜Ÿå¤´å…ƒç´ å‡ºé˜Ÿ		
 		printf("%c ", Q.data[Q.f]->data);
-		Q.f++;//¶ÓÍ·ÔªËØ³ö¶Ó
+		Q.f++;//é˜Ÿå¤´å…ƒç´ å‡ºé˜Ÿ
 	}
 	/*
 	while(f!=r){
-		//ÏÈ½«¶ÓÍ·ÔªËØµÄ×óº¢×ÓÒÀ´ÎÈë¶Ó
+		//å…ˆå°†é˜Ÿå¤´å…ƒç´ çš„å·¦å­©å­ä¾æ¬¡å…¥é˜Ÿ
 		if(queue[f]->lchild){
 			queue[r] = queue[f]->lchild;
 			r++;
 		}
-		//½«¶ÓÍ·ÔªËØµÄÓÒº¢×ÓÒÀ´ÎÈë¶Ó
+		//å°†é˜Ÿå¤´å…ƒç´ çš„å³å­©å­ä¾æ¬¡å…¥é˜Ÿ
 		if(queue[f]->rchild){
 			queue[r] = queue[f]->rchild;
 			r++;
 		}
-		//È»ºó´òÓ¡£¨·ÃÎÊ£©¶ÓÍ·ÔªËØ,²¢½«¶ÓÍ·ÔªËØ³ö¶Ó		
+		//ç„¶åæ‰“å°ï¼ˆè®¿é—®ï¼‰é˜Ÿå¤´å…ƒç´ ,å¹¶å°†é˜Ÿå¤´å…ƒç´ å‡ºé˜Ÿ		
 		printf("%c ", queue[f]->data);
-		f++;//¶ÓÍ·ÔªËØ³ö¶Ó	
+		f++;//é˜Ÿå¤´å…ƒç´ å‡ºé˜Ÿ	
 	}
 	*/
 	printf("\n");
 }
 
-//Çó¶ş²æÊ÷µÄÉî¶È
+//æ±‚äºŒå‰æ ‘çš„æ·±åº¦
 int getBiTreeDepth(BiTree T){
 	if(!T){
 		return 0;
@@ -247,7 +247,7 @@ int getBiTreeDepth(BiTree T){
 	return leftTreeDepth > rightTreeDepth ? (leftTreeDepth+1) : (rightTreeDepth+1);
 }
 
-//Çó¶ş²æÊ÷µÄ½ÚµãÊı
+//æ±‚äºŒå‰æ ‘çš„èŠ‚ç‚¹æ•°
 int getBiTreeSize(BiTree T){
 	if(!T)
 		return 0;
@@ -256,7 +256,7 @@ int getBiTreeSize(BiTree T){
 	return leftTreeSize + rightTreeSize + 1;
 }
 
-//ÏÈĞò±éÀúÇóÒ¶×Ó½ÚµãÊı
+//å…ˆåºéå†æ±‚å¶å­èŠ‚ç‚¹æ•°
 void getBiTreeLeafNodesNum(BiTree T, int &count){
 	if(T){
 		if(!T->lchild && !T->rchild)
@@ -268,7 +268,7 @@ void getBiTreeLeafNodesNum(BiTree T, int &count){
 	}
 }
 
-//ÏÈĞò±éÀúÇóÒ¶×Ó½ÚµãÊı
+//å…ˆåºéå†æ±‚å¶å­èŠ‚ç‚¹æ•°
 int getBiTreeLeafNodesNum2(BiTree T){
 	if(T){
 		if(!T->lchild && !T->rchild)
@@ -284,51 +284,51 @@ int getBiTreeLeafNodesNum2(BiTree T){
 }
 void main(){
 	BiTree T;
-	printf("Çë°´ÏÈĞò´ÎĞòÊäÈë¶ş²æÊ÷¸÷½ÚµãµÄÖµ£¬ÒÔ¿Õ¸ñ±íÊ¾¿ÕÊ÷£¬ÒÔ#ºÅ½áÊø:\n");
+	printf("è¯·æŒ‰å…ˆåºæ¬¡åºè¾“å…¥äºŒå‰æ ‘å„èŠ‚ç‚¹çš„å€¼ï¼Œä»¥ç©ºæ ¼è¡¨ç¤ºç©ºæ ‘ï¼Œä»¥#å·ç»“æŸ:\n");
 	createBiTreeByPreOrder(T);
 
 	
-	printf("ÏÈĞò±éÀú´òÓ¡¶ş²æÊ÷:\n");
+	printf("å…ˆåºéå†æ‰“å°äºŒå‰æ ‘:\n");
 	preOrderPrint(T);
 	printf("\n");
 		
-	printf("ÏÈĞò±éÀú´òÓ¡¶ş²æÊ÷£¨·Çµİ¹éËã·¨£©:\n");
+	printf("å…ˆåºéå†æ‰“å°äºŒå‰æ ‘ï¼ˆéé€’å½’ç®—æ³•ï¼‰:\n");
 	preOrderPrint2(T);
 	printf("\n");
 
-	printf("ÖĞĞò±éÀú´òÓ¡¶ş²æÊ÷:\n");
+	printf("ä¸­åºéå†æ‰“å°äºŒå‰æ ‘:\n");
 	inOrderPrint(T);
 	printf("\n");	
 	
-	printf("ÖĞĞò±éÀú´òÓ¡¶ş²æÊ÷£¨·Çµİ¹éËã·¨£©:\n");
+	printf("ä¸­åºéå†æ‰“å°äºŒå‰æ ‘ï¼ˆéé€’å½’ç®—æ³•ï¼‰:\n");
 	inOrderPrint2(T);
 	printf("\n");
 	
-	printf("ºóĞò±éÀú´òÓ¡¶ş²æÊ÷:\n");
+	printf("ååºéå†æ‰“å°äºŒå‰æ ‘:\n");
 	postOrderPrint(T);
 	printf("\n");
 
-	printf("ºóĞò±éÀú´òÓ¡¶ş²æÊ÷£¨·Çµİ¹éËã·¨£©:\n");
+	printf("ååºéå†æ‰“å°äºŒå‰æ ‘ï¼ˆéé€’å½’ç®—æ³•ï¼‰:\n");
 	postOrderPrint2(T);
 	printf("\n");
 	
-	printf("°´²ã´Î±éÀú´òÓ¡¶ş²æÊ÷£¨·Çµİ¹éËã·¨£©:\n");
+	printf("æŒ‰å±‚æ¬¡éå†æ‰“å°äºŒå‰æ ‘ï¼ˆéé€’å½’ç®—æ³•ï¼‰:\n");
 	hierarchicalTraversePrint(T);
 
 	int depth = getBiTreeDepth(T);
-	printf("¸Ã¶ş²æÊ÷Ê÷µÄÉî¶ÈÎª%d\n", depth);
+	printf("è¯¥äºŒå‰æ ‘æ ‘çš„æ·±åº¦ä¸º%d\n", depth);
 	
 
 	int size = getBiTreeSize(T);
-	printf("¸Ã¶ş²æÊ÷Ê÷µÄ½áµãÊıÎª%d\n", size);
+	printf("è¯¥äºŒå‰æ ‘æ ‘çš„ç»“ç‚¹æ•°ä¸º%d\n", size);
 	
 	int leafNodesNum = 0;
 	getBiTreeLeafNodesNum(T, leafNodesNum);
-	printf("¸Ã¶ş²æÊ÷Ê÷µÄÒ¶×ÓµãÊıÎª%d\n", leafNodesNum);
+	printf("è¯¥äºŒå‰æ ‘æ ‘çš„å¶å­ç‚¹æ•°ä¸º%d\n", leafNodesNum);
 	
 	int leafNodesNum2 = 0;
 	leafNodesNum2 = getBiTreeLeafNodesNum2(T);
-	printf("¸Ã¶ş²æÊ÷Ê÷µÄÒ¶×ÓµãÊıÎª%d\n", leafNodesNum2);
+	printf("è¯¥äºŒå‰æ ‘æ ‘çš„å¶å­ç‚¹æ•°ä¸º%d\n", leafNodesNum2);
 	
 	
 }

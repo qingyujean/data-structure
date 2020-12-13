@@ -6,14 +6,14 @@ typedef struct{
 	TElemType data;
 	int rlink;
 }BiNode;
-typedef BiNode BiTree[MAXSIZE+1];//ÏÂ±êÎª0µÄµ¥Ôª¿Õ³öÀ´
+typedef BiNode BiTree[MAXSIZE+1];//ä¸‹æ ‡ä¸º0çš„å•å…ƒç©ºå‡ºæ¥
 
-//°´ÏÈĞò´ÎĞòÊäÈë¶ş²æÊ÷ÖĞ½áµãµÄÖµ£¨Ò»¸ö×Ö·û£©£¬µãºÅ×Ö·û±íÊ¾¿ÕÊ÷£¬¹¹Ôì¶ş²æÁ´±í±íÊ¾µÄ¶ş²æÊ÷T
+//æŒ‰å…ˆåºæ¬¡åºè¾“å…¥äºŒå‰æ ‘ä¸­ç»“ç‚¹çš„å€¼ï¼ˆä¸€ä¸ªå­—ç¬¦ï¼‰ï¼Œç‚¹å·å­—ç¬¦è¡¨ç¤ºç©ºæ ‘ï¼Œæ„é€ äºŒå‰é“¾è¡¨è¡¨ç¤ºçš„äºŒå‰æ ‘T
 void createBiTree(BiTree &T, int &root, int &i){
 	TElemType e;
 	scanf("%c", &e);
 	if(e!='#'){
-		if(e!='.'){//ÊäÈëµÄµ±Ç°½Úµã²»ÊÇ¡°¿ÕÊ÷¡±£¬ÊÇÊµ½áµã
+		if(e!='.'){//è¾“å…¥çš„å½“å‰èŠ‚ç‚¹ä¸æ˜¯â€œç©ºæ ‘â€ï¼Œæ˜¯å®ç»“ç‚¹
 			T[i].data = e;
 			//T[i].llink = 0;
 			//T[i].rlink = 0;
@@ -21,101 +21,101 @@ void createBiTree(BiTree &T, int &root, int &i){
 			createBiTree(T, T[root].llink, ++i);
 			createBiTree(T, T[root].rlink, ++i);
 		}else{
-			root = 0;//ÊäÈëµÄµ±Ç°½ÚµãÊÇ¡°¿ÕÊ÷¡±£¬ÊÇĞé½áµã£¬Ôò¶ÔÓ¦Ö¸ÏòËüµÄÁ´Îª0
-			i--;//¾²Ì¬Á´±íÏÂ±ê»ØÍË£¬ÒòÎª¿ÕÊ÷Ã»ÓĞ½ø±í£¬Ö»ÓĞÊµ½Úµã½ø±íÁË
+			root = 0;//è¾“å…¥çš„å½“å‰èŠ‚ç‚¹æ˜¯â€œç©ºæ ‘â€ï¼Œæ˜¯è™šç»“ç‚¹ï¼Œåˆ™å¯¹åº”æŒ‡å‘å®ƒçš„é“¾ä¸º0
+			i--;//é™æ€é“¾è¡¨ä¸‹æ ‡å›é€€ï¼Œå› ä¸ºç©ºæ ‘æ²¡æœ‰è¿›è¡¨ï¼Œåªæœ‰å®èŠ‚ç‚¹è¿›è¡¨äº†
 		}
 	}
 }
-//ÏÈĞò±éÀú¶ş²æÊ÷£¨¸ù¡¢×ó¡¢ÓÒ£©£¨µİ¹éËã·¨£©
+//å…ˆåºéå†äºŒå‰æ ‘ï¼ˆæ ¹ã€å·¦ã€å³ï¼‰ï¼ˆé€’å½’ç®—æ³•ï¼‰
 void preOrderPrint(BiTree T, int root){
-	if(root){//¸ù½Úµã²»Îª¿Õ
+	if(root){//æ ¹èŠ‚ç‚¹ä¸ä¸ºç©º
 		printf("%c ", T[root].data);
 		preOrderPrint(T, T[root].llink);
 		preOrderPrint(T, T[root].rlink);
 	}
 }
 
-//ÏÈĞò±éÀú¶ş²æÊ÷£¨¸ù¡¢×ó¡¢ÓÒ£©£¨·Çµİ¹éËã·¨£©
+//å…ˆåºéå†äºŒå‰æ ‘ï¼ˆæ ¹ã€å·¦ã€å³ï¼‰ï¼ˆéé€’å½’ç®—æ³•ï¼‰
 void preOrderPrint2(BiTree T, int root){
-	//BiNode s[MAXSIZE];//Î¬»¤Ò»¸öÕ»£¬ÓÃÀ´¼ÇÂ¼±éÀúµÄ½Úµã
-	int s[MAXSIZE];//Î¬»¤Ò»¸öÕ»£¬ÓÃÀ´¼ÇÂ¼±éÀúµÄ½Úµã
-	int top = 0;//Ö¸ÏòÕ»¶¥ÔªËØµÄÏÂÒ»¸öÎ»ÖÃ£¬³õÊ¼Ê±top = 0
-	int pointer = root;//pointerÖ¸Ïòµ±Ç°²ãµÄ¸ù½Úµã
+	//BiNode s[MAXSIZE];//ç»´æŠ¤ä¸€ä¸ªæ ˆï¼Œç”¨æ¥è®°å½•éå†çš„èŠ‚ç‚¹
+	int s[MAXSIZE];//ç»´æŠ¤ä¸€ä¸ªæ ˆï¼Œç”¨æ¥è®°å½•éå†çš„èŠ‚ç‚¹
+	int top = 0;//æŒ‡å‘æ ˆé¡¶å…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®ï¼Œåˆå§‹æ—¶top = 0
+	int pointer = root;//pointeræŒ‡å‘å½“å‰å±‚çš„æ ¹èŠ‚ç‚¹
 	while(pointer || top){
-		if(pointer){//¸ù½Úµã²»Îª¿Õ
+		if(pointer){//æ ¹èŠ‚ç‚¹ä¸ä¸ºç©º
 			printf("%c ", T[pointer].data);
-			//s[top++] = T[pointer];//¸ù½ÚµãÈëÕ»
-			s[top++] = pointer;//¸ù½ÚµãÈëÕ»
-			pointer = T[pointer].llink;//ÕÒ¸ù½ÚµãµÄ×óº¢×Ó
-		}else{//¸ù½ÚµãÎª¿Õ
-			//BiNode topElem = s[--top];//Õ»¶¥ÔªËØ³öÕ»£¬¼´ÉÏÒ»²ãµÄ¸ù½Úµã		
+			//s[top++] = T[pointer];//æ ¹èŠ‚ç‚¹å…¥æ ˆ
+			s[top++] = pointer;//æ ¹èŠ‚ç‚¹å…¥æ ˆ
+			pointer = T[pointer].llink;//æ‰¾æ ¹èŠ‚ç‚¹çš„å·¦å­©å­
+		}else{//æ ¹èŠ‚ç‚¹ä¸ºç©º
+			//BiNode topElem = s[--top];//æ ˆé¡¶å…ƒç´ å‡ºæ ˆï¼Œå³ä¸Šä¸€å±‚çš„æ ¹èŠ‚ç‚¹		
 			//pointer = topElem.rlink;
-			int topElemPt = s[--top];//Õ»¶¥ÔªËØ³öÕ»£¬¼´ÉÏÒ»²ãµÄ¸ù½Úµã
+			int topElemPt = s[--top];//æ ˆé¡¶å…ƒç´ å‡ºæ ˆï¼Œå³ä¸Šä¸€å±‚çš„æ ¹èŠ‚ç‚¹
 			pointer = T[topElemPt].rlink;
 		}
 	}
 }
 
-//ÖĞĞò±éÀú¶ş²æÊ÷£¨×ó¡¢¸ù¡¢ÓÒ£©£¨µİ¹éËã·¨£©
+//ä¸­åºéå†äºŒå‰æ ‘ï¼ˆå·¦ã€æ ¹ã€å³ï¼‰ï¼ˆé€’å½’ç®—æ³•ï¼‰
 void inOrderPrint(BiTree T, int root){
-	if(root){//¸ù½Úµã²»Îª¿Õ		
+	if(root){//æ ¹èŠ‚ç‚¹ä¸ä¸ºç©º		
 		inOrderPrint(T, T[root].llink);
 		printf("%c ", T[root].data);
 		inOrderPrint(T, T[root].rlink);
 	}
 }
 
-//ÖĞĞò±éÀú¶ş²æÊ÷£¨×ó¡¢¸ù¡¢ÓÒ£©£¨·Çµİ¹éËã·¨£©
+//ä¸­åºéå†äºŒå‰æ ‘ï¼ˆå·¦ã€æ ¹ã€å³ï¼‰ï¼ˆéé€’å½’ç®—æ³•ï¼‰
 void inOrderPrint2(BiTree T, int root){
-	//BiNode s[MAXSIZE];//Î¬»¤Ò»¸öÕ»£¬ÓÃÀ´¼ÇÂ¼±éÀúµÄ½Úµã
-	int s[MAXSIZE];//Î¬»¤Ò»¸öÕ»£¬ÓÃÀ´¼ÇÂ¼±éÀúµÄ½Úµã
-	int top = 0;//Ö¸ÏòÕ»¶¥ÔªËØµÄÏÂÒ»¸öÎ»ÖÃ£¬³õÊ¼Ê±top = 0
-	int pointer = root;//pointerÖ¸Ïòµ±Ç°²ãµÄ¸ù½Úµã
+	//BiNode s[MAXSIZE];//ç»´æŠ¤ä¸€ä¸ªæ ˆï¼Œç”¨æ¥è®°å½•éå†çš„èŠ‚ç‚¹
+	int s[MAXSIZE];//ç»´æŠ¤ä¸€ä¸ªæ ˆï¼Œç”¨æ¥è®°å½•éå†çš„èŠ‚ç‚¹
+	int top = 0;//æŒ‡å‘æ ˆé¡¶å…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®ï¼Œåˆå§‹æ—¶top = 0
+	int pointer = root;//pointeræŒ‡å‘å½“å‰å±‚çš„æ ¹èŠ‚ç‚¹
 	while(pointer || top){
-		if(pointer){//¸ù½Úµã²»Îª¿Õ
-			//s[top++] = T[pointer];//¸ù½ÚµãÈëÕ»
-			s[top++] = pointer;//¸ù½ÚµãÈëÕ»
-			pointer = T[pointer].llink;//ÕÒ¸ù½ÚµãµÄ×óº¢×Ó
-		}else{//¸ù½ÚµãÎª¿Õ
-			//BiNode topElem = s[--top];//Õ»¶¥ÔªËØ³öÕ»£¬¼´ÉÏÒ»²ãµÄ¸ù½Úµã
+		if(pointer){//æ ¹èŠ‚ç‚¹ä¸ä¸ºç©º
+			//s[top++] = T[pointer];//æ ¹èŠ‚ç‚¹å…¥æ ˆ
+			s[top++] = pointer;//æ ¹èŠ‚ç‚¹å…¥æ ˆ
+			pointer = T[pointer].llink;//æ‰¾æ ¹èŠ‚ç‚¹çš„å·¦å­©å­
+		}else{//æ ¹èŠ‚ç‚¹ä¸ºç©º
+			//BiNode topElem = s[--top];//æ ˆé¡¶å…ƒç´ å‡ºæ ˆï¼Œå³ä¸Šä¸€å±‚çš„æ ¹èŠ‚ç‚¹
 			//printf("%c ", topElem.data);
 			//pointer = topElem.rlink;
-			int topElemPt = s[--top];//Õ»¶¥ÔªËØ³öÕ»£¬¼´ÉÏÒ»²ãµÄ¸ù½Úµã
+			int topElemPt = s[--top];//æ ˆé¡¶å…ƒç´ å‡ºæ ˆï¼Œå³ä¸Šä¸€å±‚çš„æ ¹èŠ‚ç‚¹
 			printf("%c ", T[topElemPt].data);
 			pointer = T[topElemPt].rlink;
 		}
 	}
 }
-//ºóĞò±éÀú¶ş²æÊ÷£¨×ó¡¢ÓÒ¡¢¸ù£©£¨µİ¹éËã·¨£©
+//ååºéå†äºŒå‰æ ‘ï¼ˆå·¦ã€å³ã€æ ¹ï¼‰ï¼ˆé€’å½’ç®—æ³•ï¼‰
 void postOrderPrint(BiTree T, int root){
-	if(root){//¸ù½Úµã²»Îª¿Õ
+	if(root){//æ ¹èŠ‚ç‚¹ä¸ä¸ºç©º
 		postOrderPrint(T, T[root].llink);
 		postOrderPrint(T, T[root].rlink);
 		printf("%c ", T[root].data);
 	}
 }
 
-//ºóĞò±éÀú¶ş²æÊ÷£¨×ó¡¢ÓÒ¡¢¸ù£©£¨·Çµİ¹éËã·¨£©
+//ååºéå†äºŒå‰æ ‘ï¼ˆå·¦ã€å³ã€æ ¹ï¼‰ï¼ˆéé€’å½’ç®—æ³•ï¼‰
 void postOrderPrint2(BiTree T, int root){
-	//BiNode s[MAXSIZE];//Î¬»¤Ò»¸öÕ»£¬ÓÃÀ´¼ÇÂ¼±éÀúµÄ½Úµã
-	int s[MAXSIZE];//Î¬»¤Ò»¸öÕ»£¬ÓÃÀ´¼ÇÂ¼±éÀúµÄ½ÚµãÖ¸Õë
-	int top = 0;//Ö¸ÏòÕ»¶¥ÔªËØµÄÏÂÒ»¸öÎ»ÖÃ£¬³õÊ¼Ê±top = 0
-	int pointer = root;//pointerÖ¸Ïòµ±Ç°²ãµÄ¸ù½Úµã
+	//BiNode s[MAXSIZE];//ç»´æŠ¤ä¸€ä¸ªæ ˆï¼Œç”¨æ¥è®°å½•éå†çš„èŠ‚ç‚¹
+	int s[MAXSIZE];//ç»´æŠ¤ä¸€ä¸ªæ ˆï¼Œç”¨æ¥è®°å½•éå†çš„èŠ‚ç‚¹æŒ‡é’ˆ
+	int top = 0;//æŒ‡å‘æ ˆé¡¶å…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®ï¼Œåˆå§‹æ—¶top = 0
+	int pointer = root;//pointeræŒ‡å‘å½“å‰å±‚çš„æ ¹èŠ‚ç‚¹
 
 	while(pointer || top){
-		if(pointer){//¸ù½Úµã²»Îª¿Õ
-			//s[top++] = T[pointer];//¸ù½ÚµãÈëÕ»
-			s[top++] = pointer;//¸ù½ÚµãÖ¸ÕëÈëÕ»
-			pointer = T[pointer].llink;//ÕÒ¸ù½ÚµãµÄ×óº¢×Ó
-		}else{//¸ù½ÚµãÎª¿Õ
-			//BiNode topElem = s[top-1];//È¡µÃÕ»¶¥ÔªËØ£¬¼´ÉÏÒ»²ãµÄ¸ù½Úµã
-			int topElemPt = s[top-1];//È¡µÃÕ»¶¥ÔªËØÖ¸Õë£¬¼´ÉÏÒ»²ãµÄ¸ù½ÚµãÖ¸Õë
-			if(topElemPt > 0){//µ±Ç°²ã¸ù½ÚµãµÄÓÒ×ÓÊ÷»¹Ã»ÓĞ±»·ÃÎÊ¹ı£¬Ôò·ÃÎÊÓÒ×ÓÊ÷£¬²¢¸³¡°ÓÒ×ÓÊ÷ÒÑ±éÀú¡±±êÖ¾
+		if(pointer){//æ ¹èŠ‚ç‚¹ä¸ä¸ºç©º
+			//s[top++] = T[pointer];//æ ¹èŠ‚ç‚¹å…¥æ ˆ
+			s[top++] = pointer;//æ ¹èŠ‚ç‚¹æŒ‡é’ˆå…¥æ ˆ
+			pointer = T[pointer].llink;//æ‰¾æ ¹èŠ‚ç‚¹çš„å·¦å­©å­
+		}else{//æ ¹èŠ‚ç‚¹ä¸ºç©º
+			//BiNode topElem = s[top-1];//å–å¾—æ ˆé¡¶å…ƒç´ ï¼Œå³ä¸Šä¸€å±‚çš„æ ¹èŠ‚ç‚¹
+			int topElemPt = s[top-1];//å–å¾—æ ˆé¡¶å…ƒç´ æŒ‡é’ˆï¼Œå³ä¸Šä¸€å±‚çš„æ ¹èŠ‚ç‚¹æŒ‡é’ˆ
+			if(topElemPt > 0){//å½“å‰å±‚æ ¹èŠ‚ç‚¹çš„å³å­æ ‘è¿˜æ²¡æœ‰è¢«è®¿é—®è¿‡ï¼Œåˆ™è®¿é—®å³å­æ ‘ï¼Œå¹¶èµ‹â€œå³å­æ ‘å·²éå†â€æ ‡å¿—
 				pointer = T[topElemPt].rlink;
 				s[top-1] = -s[top-1];
 			}else{
-				//BiNode topElem = s[--top];//Õ»¶¥ÔªËØ³öÕ»£¬¼´ÉÏÒ»²ãµÄ¸ù½Úµã
-				topElemPt = -topElemPt;//»¹Ô­
+				//BiNode topElem = s[--top];//æ ˆé¡¶å…ƒç´ å‡ºæ ˆï¼Œå³ä¸Šä¸€å±‚çš„æ ¹èŠ‚ç‚¹
+				topElemPt = -topElemPt;//è¿˜åŸ
 				printf("%c ", T[topElemPt].data);
 				top--;
 			}
@@ -128,50 +128,50 @@ typedef BiNode QElemType;
 typedef struct{
 	//QElemType data[20];
 	QElemType data[20];
-	int f;//Ö¸Ïò¶ÓÍ·ÔªËØ
-	int r;//Ö¸Ïò¶ÔÎ²ÔªËØµÄÏÂÒ»¸öÎ»ÖÃ
+	int f;//æŒ‡å‘é˜Ÿå¤´å…ƒç´ 
+	int r;//æŒ‡å‘å¯¹å°¾å…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®
 }SqQueue;
 
-//³õÊ¼»¯Ò»¸ö¿Õ¶ÓÁĞ
+//åˆå§‹åŒ–ä¸€ä¸ªç©ºé˜Ÿåˆ—
 void initQueue(SqQueue &Q){
 	Q.f = Q.r = 0;
 }
 
-//°´²ã´Î±éÀú¶ş²æÊ÷£¨´ÓÉÏµ½ÏÂ¡¢´Ó×óµ½ÓÒ£©
+//æŒ‰å±‚æ¬¡éå†äºŒå‰æ ‘ï¼ˆä»ä¸Šåˆ°ä¸‹ã€ä»å·¦åˆ°å³ï¼‰
 void hierarchicalTraversePrint(BiTree T, int root){
-	SqQueue Q;//Î¬»¤Ò»¸ö¶ÓÁĞ£¬°´²ã´Î´ÓÉÏµ½ÏÂ¡¢´Ó×óµ½ÓÒ´æ·Å¶ş²æÊ÷µÄ¸÷¸ö½Úµã£¨Êµ¼ÊÉÏÊÇ°´¹ã¶ÈÓÅÏÈËÑË÷Ëã·¨ÊµÏÖ²ã´Î±éÀú£©
+	SqQueue Q;//ç»´æŠ¤ä¸€ä¸ªé˜Ÿåˆ—ï¼ŒæŒ‰å±‚æ¬¡ä»ä¸Šåˆ°ä¸‹ã€ä»å·¦åˆ°å³å­˜æ”¾äºŒå‰æ ‘çš„å„ä¸ªèŠ‚ç‚¹ï¼ˆå®é™…ä¸Šæ˜¯æŒ‰å¹¿åº¦ä¼˜å…ˆæœç´¢ç®—æ³•å®ç°å±‚æ¬¡éå†ï¼‰
 	initQueue(Q);
 	//BiNode queue[20];
 	
-	//¸ù½ÚµãÈë¶Ó
+	//æ ¹èŠ‚ç‚¹å…¥é˜Ÿ
 	Q.data[Q.r] = T[root];
 	Q.r++;
 	while(Q.f != Q.r){
-		//ÏÈ½µ¶ÓÍ·ÔªËØµÄ×óº¢×Ó£¨Êµ½Úµã£©Èë¶Ó
+		//å…ˆé™é˜Ÿå¤´å…ƒç´ çš„å·¦å­©å­ï¼ˆå®èŠ‚ç‚¹ï¼‰å…¥é˜Ÿ
 		if(Q.data[Q.f].llink){
 			Q.data[Q.r] = T[Q.data[Q.f].llink];
 			Q.r++;
 		}
-		//½«¶ÓÍ·ÔªËØµÄÓÒº¢×Ó£¨Êµ½Úµã£©Èë¶Ó
+		//å°†é˜Ÿå¤´å…ƒç´ çš„å³å­©å­ï¼ˆå®èŠ‚ç‚¹ï¼‰å…¥é˜Ÿ
 		if(Q.data[Q.f].rlink){
 			Q.data[Q.r] = T[Q.data[Q.f].rlink];
 			Q.r++;
 		}
-		//´òÓ¡£¨·ÃÎÊ£©¶ÓÍ·ÔªËØ£¬²¢½«Æä³ö¶Ó
+		//æ‰“å°ï¼ˆè®¿é—®ï¼‰é˜Ÿå¤´å…ƒç´ ï¼Œå¹¶å°†å…¶å‡ºé˜Ÿ
 		printf("%c ", Q.data[Q.f].data);
 		Q.f++;
 	}
 }
-//Çó¶ş²æÊ÷µÄÉî¶È
+//æ±‚äºŒå‰æ ‘çš„æ·±åº¦
 int getBiTreeDepth(BiTree T, int root){
-	if(!root)//¸ù½ÚµãÎª¿ÕÊ÷
+	if(!root)//æ ¹èŠ‚ç‚¹ä¸ºç©ºæ ‘
 		return 0;
 	int leftTreeDepth = getBiTreeDepth(T, T[root].llink);
 	int rightTreeDepth = getBiTreeDepth(T, T[root].rlink);
 	return leftTreeDepth > rightTreeDepth ? (leftTreeDepth + 1) : (rightTreeDepth + 1);
 }
 
-//Çó¶ş²æÊ÷µÄ½áµãÊı
+//æ±‚äºŒå‰æ ‘çš„ç»“ç‚¹æ•°
 int getBiTreeSize(BiTree T, int root){
 	if(!root)
 		return 0;
@@ -180,12 +180,12 @@ int getBiTreeSize(BiTree T, int root){
 	return leftTreeSize + rightTreeSize + 1;
 }
 
-//ÏÈĞò±éÀúµÄ·½·¨Çó¶ş²æÊ÷µÄÒ¶×Ó½ÚµãÊı
+//å…ˆåºéå†çš„æ–¹æ³•æ±‚äºŒå‰æ ‘çš„å¶å­èŠ‚ç‚¹æ•°
 int getBiTreeLeafNodesNum(BiTree T, int root){
 	if(!root)
 		return 0;
-	else{//¸ù½Úµã²»Îª¿ÕÊ÷
-		if(!T[root].llink && !T[root].rlink){//Èç¹ûµ±Ç°¸ù½ÚµãµÄ×óÓÒº¢×Ó¾ù²»Îª¿Õ
+	else{//æ ¹èŠ‚ç‚¹ä¸ä¸ºç©ºæ ‘
+		if(!T[root].llink && !T[root].rlink){//å¦‚æœå½“å‰æ ¹èŠ‚ç‚¹çš„å·¦å³å­©å­å‡ä¸ä¸ºç©º
 			return 1;
 		}
 		int leftTreeLeafNodesNum = getBiTreeLeafNodesNum(T, T[root].llink);
@@ -194,56 +194,56 @@ int getBiTreeLeafNodesNum(BiTree T, int root){
 	}
 }
 
-void main(){
+int main(){
 	BiTree tree;
-	int root = 1;//¸ù½ÚµãµÄÎ»ÖÃ
-	printf("Çë°´ÏÈĞò´ÎĞòÊäÈë¶ş²æÊ÷¸÷½ÚµãÒÔ#ºÅ½áÊø£¬¿ÕÊ÷ÓÃµãºÅ´úÌæ£º\n");
-	int pos = 1;//¿ØÖÆ¼ÓÈë¾²Ì¬Êı×éµÄÎ»ÖÃ
+	int root = 1;//æ ¹èŠ‚ç‚¹çš„ä½ç½®
+	printf("è¯·æŒ‰å…ˆåºæ¬¡åºè¾“å…¥äºŒå‰æ ‘å„èŠ‚ç‚¹ä»¥#å·ç»“æŸï¼Œç©ºæ ‘ç”¨ç‚¹å·ä»£æ›¿ï¼š\n");
+	int pos = 1;//æ§åˆ¶åŠ å…¥é™æ€æ•°ç»„çš„ä½ç½®
 	createBiTree(tree, root, pos);	
 
 	
-	printf("ÏÈĞò±éÀú´òÓ¡¶ş²æÊ÷(µİ¹éËã·¨):\n");
+	printf("å…ˆåºéå†æ‰“å°äºŒå‰æ ‘(é€’å½’ç®—æ³•):\n");
 	preOrderPrint(tree, root);
 	printf("\n");
 		
 
-	printf("ÏÈĞò±éÀú´òÓ¡¶ş²æÊ÷(·Çµİ¹éËã·¨):\n");
+	printf("å…ˆåºéå†æ‰“å°äºŒå‰æ ‘(éé€’å½’ç®—æ³•):\n");
 	preOrderPrint2(tree, root);
 	printf("\n");
 	
 
-	printf("ÖĞĞò±éÀú´òÓ¡¶ş²æÊ÷(µİ¹éËã·¨):\n");
+	printf("ä¸­åºéå†æ‰“å°äºŒå‰æ ‘(é€’å½’ç®—æ³•):\n");
 	inOrderPrint(tree, root);
 	printf("\n");
 
-	printf("ÖĞĞò±éÀú´òÓ¡¶ş²æÊ÷(·Çµİ¹éËã·¨):\n");
+	printf("ä¸­åºéå†æ‰“å°äºŒå‰æ ‘(éé€’å½’ç®—æ³•):\n");
 	inOrderPrint2(tree, root);
 	printf("\n");
 	
 	
-	printf("ºóĞò±éÀú´òÓ¡¶ş²æÊ÷(µİ¹éËã·¨):\n");
+	printf("ååºéå†æ‰“å°äºŒå‰æ ‘(é€’å½’ç®—æ³•):\n");
 	postOrderPrint(tree, root);
 	printf("\n");
 
-	printf("ºóĞò±éÀú´òÓ¡¶ş²æÊ÷(·Çµİ¹éËã·¨):\n");
+	printf("ååºéå†æ‰“å°äºŒå‰æ ‘(éé€’å½’ç®—æ³•):\n");
 	postOrderPrint2(tree, root);
 	printf("\n");
 	
 	
-	printf("°´²ã´Î±éÀú´òÓ¡¶ş²æÊ÷(·Çµİ¹éËã·¨):\n");
+	printf("æŒ‰å±‚æ¬¡éå†æ‰“å°äºŒå‰æ ‘(éé€’å½’ç®—æ³•):\n");
 	hierarchicalTraversePrint(tree, root);
 	printf("\n");
-	
 
 	
 	int depth = getBiTreeDepth(tree, root);
-	printf("¸Ã¶ş²æÊ÷µÄÉî¶ÈÎª:%d\n", depth);
+	printf("è¯¥äºŒå‰æ ‘çš„æ·±åº¦ä¸º:%d\n", depth);
 	
 
 	int size = getBiTreeSize(tree, root);
-	printf("¸Ã¶ş²æÊ÷µÄ½áµãÊıÎª:%d\n", size);
+	printf("è¯¥äºŒå‰æ ‘çš„ç»“ç‚¹æ•°ä¸º:%d\n", size);
 	
 	int leafNodesNum = getBiTreeLeafNodesNum(tree, root);
-	printf("¸Ã¶ş²æÊ÷µÄÒ¶×Ó½áµãÊıÎª:%d\n", leafNodesNum);
+	printf("è¯¥äºŒå‰æ ‘çš„å¶å­ç»“ç‚¹æ•°ä¸º:%d\n", leafNodesNum);
 	
+	return 0;
 }
