@@ -1,7 +1,7 @@
-//ÊµÀı£º(5*(12-3)+4)/2=24;4+2*3-10/5=8;
+//å®ä¾‹ï¼š(5*(12-3)+4)/2=24;4+2*3-10/5=8;
 #include<stdio.h>
 #define MAXSIZE 30
-char op[MAXSIZE], num[MAXSIZE];//È«¾Ö±äÁ¿
+char op[MAXSIZE], num[MAXSIZE];//å…¨å±€å˜é‡
 int opTop, numTop;
 //void calculate(SqStack op, SqStack num){
 void calculate(){
@@ -45,15 +45,15 @@ void calculate(){
 
 
 
-//´¦Àí¼òµ¥±í´ïÊ½
+//å¤„ç†ç®€å•è¡¨è¾¾å¼
 void dealExpression(){
 	//SqStack op, num;
 	//initStack(op);
 	//initStack(num);
-	//³õÊ¼»¯opÕ»ºÍnumÕ»:Õ»Îª¿Õ£ºtop=0;Õ»Âú£ºtop=MAXSIZE
+	//åˆå§‹åŒ–opæ ˆå’Œnumæ ˆ:æ ˆä¸ºç©ºï¼štop=0;æ ˆæ»¡ï¼štop=MAXSIZE
 	opTop = 0, numTop = 0;
 
-	printf("ÇëÊäÈë¼òµ¥±í´ïÊ½(ÒÔ#ºÅ½áÊø)£º");
+	printf("è¯·è¾“å…¥ç®€å•è¡¨è¾¾å¼(ä»¥#å·ç»“æŸ)ï¼š");
 	char currentChar;
 	scanf("%c", &currentChar);
 	//printf("currentChar=%c", currentChar);
@@ -67,10 +67,10 @@ void dealExpression(){
 				if(!isEmpty(op)){
 					SElemType e;
 					getTopElem(op, e);
-					while(e != '('){//opÕ»²»Îª¿ÕÇÒÕ»¶¥ÔªËØ²»Îª'('£¬¼´Îª'+'¡¢'-'¡¢'*'¡¢'/'£¬¶¼Ó¦¸Ã½øĞĞÔËËã
+					while(e != '('){//opæ ˆä¸ä¸ºç©ºä¸”æ ˆé¡¶å…ƒç´ ä¸ä¸º'('ï¼Œå³ä¸º'+'ã€'-'ã€'*'ã€'/'ï¼Œéƒ½åº”è¯¥è¿›è¡Œè¿ç®—
 						calculate();						
 					}
-					//´ËÊ±eÎª'('£¬ÔòÓ¦ÈëÕ»
+					//æ­¤æ—¶eä¸º'('ï¼Œåˆ™åº”å…¥æ ˆ
 					push(op, currentChar);
 					scanf("%c", currentChar);
 				}*/
@@ -90,7 +90,7 @@ void dealExpression(){
 				if(!isEmpty(op)){
 					SElemType e;
 					getTopElem(op, e);
-					if(e == '*'||e == '/'){//ÔòÓ¦½øĞĞ¼ÆËã
+					if(e == '*'||e == '/'){//åˆ™åº”è¿›è¡Œè®¡ç®—
 						calculate();
 					}
 					push(op, currentChar);
@@ -112,25 +112,25 @@ void dealExpression(){
 				break;
 			case ')':
 				/*
-				if(!isEmpty(op)){//Õ»²»Îª¿Õ
+				if(!isEmpty(op)){//æ ˆä¸ä¸ºç©º
 					SElemType e;
 					getTopElem(op, e);
 					while(e!='('){
 						calculate();
 					}
-					//´ËÊ±opÕ»¶¥ÔªËØeÎª'('£¬Ó¦¸Ãµ¯³ö×óÀ¨ºÅ
+					//æ­¤æ—¶opæ ˆé¡¶å…ƒç´ eä¸º'('ï¼Œåº”è¯¥å¼¹å‡ºå·¦æ‹¬å·
 					SElemType popElem;
 					pop(op, popElem);
 					scanf("%c", currentChar);
 				}*/
-				while(op[opTop-1]!='('){//µ±Ç°ÊÇ'('£¬ÔòopÕ»Ò»¶¨ÄÜÓĞ'('Æ¥Åäµ½,¼´opÕ»Ò»¶¨²»Îª¿Õ
+				while(op[opTop-1]!='('){//å½“å‰æ˜¯'('ï¼Œåˆ™opæ ˆä¸€å®šèƒ½æœ‰'('åŒ¹é…åˆ°,å³opæ ˆä¸€å®šä¸ä¸ºç©º
 					calculate();
 				}
-				opTop--;//³öÕ»£¬µ¯³ö×óÀ¨ºÅ
+				opTop--;//å‡ºæ ˆï¼Œå¼¹å‡ºå·¦æ‹¬å·
 				scanf("%c", &currentChar);
 				//printf("currentChar=%c", currentChar);
 				break;
-			default://currentCharÎªÊı×Ö£¬ÔòÈënumÕ»
+			default://currentCharä¸ºæ•°å­—ï¼Œåˆ™å…¥numæ ˆ
 				//printf("testNum");
 				int opNum = 0;
 				do{
@@ -148,8 +148,8 @@ void dealExpression(){
 		}//end switch
 		//printf("test3");
 	}
-	//while½áÊø£¬ËµÃ÷±í´ïÊ½ÒÑ¾­ÊäÈë½áÊø£¬ÔòÖ»ÒªopÕ»²»Îª¿Õ£¬¾ÍÓ¦½øĞĞ¼ÆËã
-	//µ±opÕ»Îª¿ÕÊ±£¬Ôòµ¯³önumÕ»Õ»¶¥ÔªËØ¼´ÎªÔËËã½á¹û
+	//whileç»“æŸï¼Œè¯´æ˜è¡¨è¾¾å¼å·²ç»è¾“å…¥ç»“æŸï¼Œåˆ™åªè¦opæ ˆä¸ä¸ºç©ºï¼Œå°±åº”è¿›è¡Œè®¡ç®—
+	//å½“opæ ˆä¸ºç©ºæ—¶ï¼Œåˆ™å¼¹å‡ºnumæ ˆæ ˆé¡¶å…ƒç´ å³ä¸ºè¿ç®—ç»“æœ
 	//SElemType e;
 	//getTopElem(op, e);
 	/*
@@ -158,17 +158,19 @@ void dealExpression(){
 	}
 	SElemType result;
 	getTopElem(op, result);
-	printf("¼ÆËã½á¹ûÊÇ%d\n", result);
+	printf("è®¡ç®—ç»“æœæ˜¯%d\n", result);
 	*/
 	while(opTop){
 		calculate();
 	}
 	int result = num[numTop-1];
-	printf("¼ÆËã½á¹ûÊÇ%d\n", result);
+	printf("è®¡ç®—ç»“æœæ˜¯%d\n", result);
 }
 
 
 
-void main(){
+int main(){
 	dealExpression();
+
+	return 0;
 }

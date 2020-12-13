@@ -1,66 +1,66 @@
-/*Õ»ÊÇ²Ù×÷ÊÜÏŞµÄÏßĞÔ±í£¬±íÍ·ÎªÕ»¶¥£¬±íÎ²ÎªÕ»µ×
-ºÍÏßĞÔ±íÒ»Ñù£¬Õ»Ò²ÓĞÁ½ÖÖ´æ´¢±íÊ¾·½·¨£º1.Ë³ĞòÕ»£¨¶¯Ì¬Êı×é¡¢¾²Ì¬Êı×é£©2.Á´Õ»£¨µ¥Á´±í¡¢¾²Ì¬Á´±í£©
-·ÖÎö£º
-	1.Ë³ĞòÕ»(topÎªÕ»¶¥ÔªËØµÄÏÂÒ»¸öÎ»ÖÃ)
-	¶¯Ì¬Êı×é£º
-	#define STACK_INIT_SIZE 100//³õÊ¼·ÖÅäÁ¿
-	#define STACKINCREAMENCE 10//·ÖÅäÔöÁ¿
+/*æ ˆæ˜¯æ“ä½œå—é™çš„çº¿æ€§è¡¨ï¼Œè¡¨å¤´ä¸ºæ ˆé¡¶ï¼Œè¡¨å°¾ä¸ºæ ˆåº•
+å’Œçº¿æ€§è¡¨ä¸€æ ·ï¼Œæ ˆä¹Ÿæœ‰ä¸¤ç§å­˜å‚¨è¡¨ç¤ºæ–¹æ³•ï¼š1.é¡ºåºæ ˆï¼ˆåŠ¨æ€æ•°ç»„ã€é™æ€æ•°ç»„ï¼‰2.é“¾æ ˆï¼ˆå•é“¾è¡¨ã€é™æ€é“¾è¡¨ï¼‰
+åˆ†æï¼š
+	1.é¡ºåºæ ˆ(topä¸ºæ ˆé¡¶å…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®)
+	åŠ¨æ€æ•°ç»„ï¼š
+	#define STACK_INIT_SIZE 100//åˆå§‹åˆ†é…é‡
+	#define STACKINCREAMENCE 10//åˆ†é…å¢é‡
 	typedef int SElemType;
 	typedef struct SqStack{
 		SElemType *base;
 		SElemType *top;
-		int stacksize;//µ±Ç°ÒÑ·ÖÅäµÄ´æ´¢¿Õ¼ä£¬ÒÔÔªËØÎªµ¥Î»
+		int stacksize;//å½“å‰å·²åˆ†é…çš„å­˜å‚¨ç©ºé—´ï¼Œä»¥å…ƒç´ ä¸ºå•ä½
 	}SqStack;
 
-		Õ»²»´æÔÚ£ºbase = NULL
-		¿ÕÕ»£ºtop = base
-		ÂúÕ»£ºtop-base >= stacksize
+		æ ˆä¸å­˜åœ¨ï¼šbase = NULL
+		ç©ºæ ˆï¼štop = base
+		æ»¡æ ˆï¼štop-base >= stacksize
 
-	¾²Ì¬Êı×é£º
+	é™æ€æ•°ç»„ï¼š
 	#define MAXSIZE 100
 	typedef struct SqStack{
 		SElemType data[MAXSIZE];
-		int top;//Ö¸ÏòÕ»¶¥ÔªËØ
+		int top;//æŒ‡å‘æ ˆé¡¶å…ƒç´ 
 	}SqStack;
 
-		¿ÕÕ»£ºtop = 0
-		ÂúÕ»£ºtop = MAXSIZE
+		ç©ºæ ˆï¼štop = 0
+		æ»¡æ ˆï¼štop = MAXSIZE
 
-	2.Á´Õ»(µ¥Á´±íÊ½£¬topÖ¸ÏòÕ»¶¥ÔªËØ)
+	2.é“¾æ ˆ(å•é“¾è¡¨å¼ï¼ŒtopæŒ‡å‘æ ˆé¡¶å…ƒç´ )
 	typedef struct SqNode{
 		SElemType data;
 		struct SqNode *next;
 	}SqNode, *LinkStack;
-	LinkStack top;//Õ»¶¥Ö¸Õë
+	LinkStack top;//æ ˆé¡¶æŒ‡é’ˆ
 
-		¿ÕÕ»£ºStackNode *top = NULL
+		ç©ºæ ˆï¼šStackNode *top = NULL
 */
 
-//±¾ÊµÀıÒÔ¾²Ì¬Êı×éÊµÏÖË³ĞòÕ»£¬ÆäÖĞ£ºtopÎªÕ»¶¥ÔªËØµÄÏÂÒ»¸öÎ»ÖÃ
+//æœ¬å®ä¾‹ä»¥é™æ€æ•°ç»„å®ç°é¡ºåºæ ˆï¼Œå…¶ä¸­ï¼štopä¸ºæ ˆé¡¶å…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®
 #include<stdio.h>
 #define MAXSIZE 100
 typedef char SElemType;
 typedef struct SqStack{
 	SElemType data[MAXSIZE];
-	int top;//Ö¸ÏòÕ»¶¥ÔªËØ
+	int top;//æŒ‡å‘æ ˆé¡¶å…ƒç´ 
 }SqStack;
 
-//³õÊ¼»¯¿ÕÕ»
+//åˆå§‹åŒ–ç©ºæ ˆ
 void initStack(SqStack &s){
 	s.top = 0;
 }
 
-//ÅĞÕ»¿Õ
+//åˆ¤æ ˆç©º
 bool isEmpty(SqStack s){
 	if(s.top == 0){
-		printf("ÊÇ¿ÕÕ»\n");//
+		printf("æ˜¯ç©ºæ ˆ\n");//
 		return true;
 	}else{
 		return false;
 	}
 }
 
-//ÅĞÕ»Âú
+//åˆ¤æ ˆæ»¡
 bool isFull(SqStack s){
 	if(s.top == MAXSIZE){
 		return true;
@@ -70,72 +70,74 @@ bool isFull(SqStack s){
 	}
 }
 
-//È¡Õ»¶¥ÔªËØ
+//å–æ ˆé¡¶å…ƒç´ 
 void getTopElem(SqStack s, SElemType &e){
 	if(!isEmpty(s))
 		e = s.data[s.top-1];
 	else
-		printf("´ËÕ»Îª¿ÕÕ»£¬È¡Õ»¶¥ÔªËØÊ§°Ü\n");
+		printf("æ­¤æ ˆä¸ºç©ºæ ˆï¼Œå–æ ˆé¡¶å…ƒç´ å¤±è´¥\n");
 }
 
-//ÈëÕ»
+//å…¥æ ˆ
 void push(SqStack &s, SElemType e){
 	if(!isFull(s)){
 		s.data[s.top] = e;
 		s.top++;
 	}else
-		printf("´ËÕ»ÒÑÂú£¬ÈëÕ»²Ù×÷Ê§°Ü\n");
+		printf("æ­¤æ ˆå·²æ»¡ï¼Œå…¥æ ˆæ“ä½œå¤±è´¥\n");
 }
 
-//³öÕ»
+//å‡ºæ ˆ
 void pop(SqStack &s, SElemType &e){
 	if(!isEmpty(s)){
 		e = s.data[s.top-1];
 		s.top--;
 	}
 	else
-		printf("´ËÕ»Îª¿ÕÕ»£¬³öÕ»²Ù×÷Ê§°Ü\n");
+		printf("æ­¤æ ˆä¸ºç©ºæ ˆï¼Œå‡ºæ ˆæ“ä½œå¤±è´¥\n");
 }
 
-//ÀûÓÃÈëÕ»²Ù×÷´´½¨Ò»¸ö³õÊ¼Õ»
+//åˆ©ç”¨å…¥æ ˆæ“ä½œåˆ›å»ºä¸€ä¸ªåˆå§‹æ ˆ
 void createStatck(SqStack &s, int n){
-	printf("ÒÀ´ÎÊäÈëÕ»ÄÚÔªËØ£º\n");
+	printf("ä¾æ¬¡è¾“å…¥æ ˆå†…å…ƒç´ ï¼š\n");
 	for(int i = 0; i < n; i++){
 		SElemType e;
 		scanf("%c", &e);
 		push(s, e);
-		getchar();//ÎüÈë»Ø³µ·û
+		getchar();//å¸å…¥å›è½¦ç¬¦
 	}
 	printf("\n");
 }
 
-//´òÓ¡Êä³öÕ»ÄÚÔªËØ
+//æ‰“å°è¾“å‡ºæ ˆå†…å…ƒç´ 
 void printStack(SqStack s){
-	int stackLen = s.top;//Õ»³¤
-	printf("´òÓ¡Õ»ÄÚÔªËØ£º");
+	int stackLen = s.top;//æ ˆé•¿
+	printf("æ‰“å°æ ˆå†…å…ƒç´ ï¼š");
 	for(int i = 0; i < stackLen; i++){
 		printf("%c ", s.data[i]);
 	}
 	printf("\n");
 }
 
-void main(){
+int main(){
 	SqStack s;
 	initStack(s);
 	
-	createStatck(s, 5);//²úÉúÒ»¸ö´ÓÕ»¶¥µ½Õ»µ×Îª£ºa£¬c£¬e£¬g£¬iµÄÕ»
+	createStatck(s, 5);//äº§ç”Ÿä¸€ä¸ªä»æ ˆé¡¶åˆ°æ ˆåº•ä¸ºï¼šaï¼Œcï¼Œeï¼Œgï¼Œiçš„æ ˆ
 	printStack(s);
 
-	//ÈëÕ»ĞÂÔªËØ£ºj
-	printf("ÊäÈëÒ»¸öĞÂÔªËØÈëÕ»£¨Èç×ÖÄ¸j£©:");
+	//å…¥æ ˆæ–°å…ƒç´ ï¼šj
+	printf("è¾“å…¥ä¸€ä¸ªæ–°å…ƒç´ å…¥æ ˆï¼ˆå¦‚å­—æ¯jï¼‰:");
 	SElemType pushElem;
 	scanf("%c", &pushElem);
 	push(s, pushElem);
 	printStack(s);
 
-	//³öÕ»
+	//å‡ºæ ˆ
 	SElemType popElem;
 	pop(s, popElem);
-	printf("\n³öÕ»ÔªËØÎª%c\n", popElem);
+	printf("\nå‡ºæ ˆå…ƒç´ ä¸º%c\n", popElem);
 	printStack(s);
+
+	return 0;
 }
