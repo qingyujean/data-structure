@@ -149,6 +149,7 @@ void unionList(LinkList &La, LinkList &Lb){
 	free(Lb);//释放Lb的头节点
 }
 int main(){  	
+	
 	LinkList L;
 	createList(L, 5);//初始化并创建一个线性单链表
 	printList(L);	
