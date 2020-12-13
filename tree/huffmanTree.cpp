@@ -34,7 +34,7 @@ void select(HuffmanTree HT, int k, int &s1, int &s2){
 	
 	tmp = MAX;
 	tmpi = 0;
-	for(i = 1; i <= k; i++){
+	for(int i = 1; i <= k; i++){
 		if((!HT[i].parent) && i!=s1){//parent为0
 			if(tmp > HT[i].weight){
 				tmp = HT[i].weight;
@@ -55,14 +55,14 @@ void createHuffmanTree(HuffmanTree &HT, int *w, int n){
 		HT[i].parent = 0;
 		HT[i].rchild = 0;
 	}
-	for(; i <=M; i++){//HT后m-n个分量存储中间结点，最后一个分量显然是整棵树的根节点
+	for(int i = n+1; i <=M; i++){//HT后m-n个分量存储中间结点，最后一个分量显然是整棵树的根节点
 		HT[i].weight = 0;
 		HT[i].lchild = 0;
 		HT[i].parent = 0;
 		HT[i].rchild = 0;
 	}
 	//开始构建哈夫曼树，即创建HT的后m-n个结点的过程，直至创建出根节点。用哈夫曼算法
-	for(i = n+1; i <= M; i++){
+	for(int i = n+1; i <= M; i++){
 		int s1, s2;
 		select(HT, i-1, s1, s2);//在HT[1...i-1]里选择parent为0的且权值最小的2结点，其序号分别为s1,s2，parent不为0说明该结点已经参与构造了，故不许再考虑
 		HT[s1].parent = i;
@@ -145,7 +145,7 @@ void decodingHuffmanCode(HuffmanTree HT, char *ch, char testDecodingStr[], int l
 	result[j] = '\0';//结果串的结束符	
 }
 
-void main(){
+int main(){
 	HuffmanTree HT;
 	
 	TElemType ch[N+1];//0号单元不使用，存储n个等待编码的字符
@@ -165,12 +165,14 @@ void main(){
 	printHuffmanCoding(HC, ch);
 
 	//解码测试用例：abaccda----01000101101110
-	char * testDecodingStr = "01000101101110";
+	char *testDecodingStr = "01000101101110";
 	int testDecodingStrLen = 14;
 	printf("编码%s对应的字符串是：", testDecodingStr);
 	char result[30];//存储解码以后的字符串
 	decodingHuffmanCode(HT, ch, testDecodingStr, testDecodingStrLen, result);//解码（译码），通过一段给定的编码翻译成对应的字符串
 	printf("%s\n", result);
+	
+	return 0;
 }
 
 /*
