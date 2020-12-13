@@ -183,6 +183,7 @@ int main(){
 	createSqList(Lb, 7);//创建线性表Lc
 	printSqList(Lb);
 	mergeSqList(La, Lb, Lc);
+	printf("merge以后得到的Lc:");
 	printSqList(Lc);
 	*/
 
@@ -201,5 +202,5 @@ int main(){
 	printSqList(La);
 	printf("La的长度为%d\n",La.len);
 	*/
-	return 0
+	return 0;
 }
