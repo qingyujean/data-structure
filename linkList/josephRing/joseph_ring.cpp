@@ -8,11 +8,11 @@ typedef struct LNode{
 	LNode *next;
 }LNode,*LinkList;
 
-//´´½¨Ò»¸ö²»´øÍ·½ÚµãµÄÑ­»·µ¥ÏòÁ´±í
+//åˆ›å»ºä¸€ä¸ªä¸å¸¦å¤´èŠ‚ç‚¹çš„å¾ªç¯å•å‘é“¾è¡¨
 void createCircularList(LinkList &L, int n){
-	printf("ÒÀ´ÎÊäÈëÊı¾İÔªËØ£º\n");
+	printf("ä¾æ¬¡è¾“å…¥æ•°æ®å…ƒç´ ï¼š\n");
 
-	//ÊäÈëµÚÒ»¸öÔªËØ£¬¼´Í·½Úµã
+	//è¾“å…¥ç¬¬ä¸€ä¸ªå…ƒç´ ï¼Œå³å¤´èŠ‚ç‚¹
 	LinkList head = (LinkList)malloc(sizeof(LNode));
 	head->sequence = 1;
 	head->next = NULL;
@@ -34,9 +34,9 @@ void createCircularList(LinkList &L, int n){
 	p->next = L;
 }
 
-//´òÓ¡Êä³öµ¥ÏîÑ­»·Á´±í
+//æ‰“å°è¾“å‡ºå•é¡¹å¾ªç¯é“¾è¡¨
 void printCircularList(LinkList L){
-	printf("´òÓ¡µ¥ÏîÑ­»·Á´±í£º");
+	printf("æ‰“å°å•é¡¹å¾ªç¯é“¾è¡¨ï¼š");
 	LinkList head = L;
 	LinkList p = L->next;
 	printf("%d ",head->data);
@@ -47,11 +47,11 @@ void printCircularList(LinkList L){
 	printf("\n");
 }
 
-//Ô¼Éª·ò»·µÄÊµÏÖ
+//çº¦ç‘Ÿå¤«ç¯çš„å®ç°
 void josephRing(LinkList L, int m, int n){
-	int *outNum = new int[n], num=0;//°´ÍË³öË³Ğò¼ÇÂ¼±àºÅ
+	int *outNum = new int[n], num=0;//æŒ‰é€€å‡ºé¡ºåºè®°å½•ç¼–å·
 	
-	int count = 1;//±¨Êı
+	int count = 1;//æŠ¥æ•°
 	LinkList p = L, q = L;	
 	while(p->next!=p){
 		if(count%m == 0){
@@ -70,15 +70,15 @@ void josephRing(LinkList L, int m, int n){
 	}
 	outNum[num] = p->sequence;
 
-	printf("ÍË³öµÄ±àºÅË³ĞòÊÇ£º");
+	printf("é€€å‡ºçš„ç¼–å·é¡ºåºæ˜¯ï¼š");
 	for(int i = 0; i < n; i++){
 		printf("%d ", outNum[i]);
 	}
 	printf("\n");
 }
 
-//ÊµÀı£ºÉèm=20£¬n=7£¬7¸öÈËµÄÃÜÂëÒÀ´ÎÊÇ3£¬1£¬7£¬2£¬4£¬8£¬4£¬
-//ÔòÍËÏ¯µÄÈËµÄ±àºÅÒÀ´ÎÎª6£¬1£¬7£¬5£¬3£¬2£¬4¡£
+//å®ä¾‹ï¼šè®¾m=20ï¼Œn=7ï¼Œ7ä¸ªäººçš„å¯†ç ä¾æ¬¡æ˜¯3ï¼Œ1ï¼Œ7ï¼Œ2ï¼Œ4ï¼Œ8ï¼Œ4ï¼Œ
+//åˆ™é€€å¸­çš„äººçš„ç¼–å·ä¾æ¬¡ä¸º6ï¼Œ1ï¼Œ7ï¼Œ5ï¼Œ3ï¼Œ2ï¼Œ4ã€‚
 void main(){
 	LinkList L;
 	createCircularList(L, 7);
