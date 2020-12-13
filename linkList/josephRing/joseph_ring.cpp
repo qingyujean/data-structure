@@ -79,10 +79,12 @@ void josephRing(LinkList L, int m, int n){
 
 //实例：设m=20，n=7，7个人的密码依次是3，1，7，2，4，8，4，
 //则退席的人的编号依次为6，1，7，5，3，2，4。
-void main(){
+int main(){
 	LinkList L;
 	createCircularList(L, 7);
 	printCircularList(L);
 
 	josephRing(L, 20, 7);
+
+	return 0;
 }
