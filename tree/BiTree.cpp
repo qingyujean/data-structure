@@ -282,7 +282,8 @@ int getBiTreeLeafNodesNum2(BiTree T){
 		return 0;
 	}
 }
-void main(){
+
+int main(){
 	BiTree T;
 	printf("请按先序次序输入二叉树各节点的值，以空格表示空树，以#号结束:\n");
 	createBiTreeByPreOrder(T);
@@ -330,5 +331,5 @@ void main(){
 	leafNodesNum2 = getBiTreeLeafNodesNum2(T);
 	printf("该二叉树树的叶子点数为%d\n", leafNodesNum2);
 	
-	
+	return 0;
 }
