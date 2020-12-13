@@ -159,7 +159,7 @@ void addPolyn(polynomial &Pa, polynomial &Pb){
 //实例：Pa(x)=7+3x+9x^8+5x^17, 输入((7,0),(3,1),(9,8),(5,17))
 //Pb(x)=8x+22x^7-9x^8,输入((8,1),(22,7),(-9,8))
 //和多项式为Pa(x) = 7+11x+22x^7+5x^17,即最后应该输出（(7,0),(11,1),(22,7),(5,17)）
-void main(){
+int main(){
 
 	polynomial Pa;
 	createPolyn(Pa, 4);//初始化并创建多项式链表Pa
@@ -172,4 +172,6 @@ void main(){
 	printf("执行多项式相加以后\n");
 	addPolyn(Pa, Pb);
 	printPolynomial(Pa);
+
+	return 0;
 }
