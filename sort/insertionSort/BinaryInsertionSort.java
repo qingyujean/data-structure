@@ -1,25 +1,25 @@
-package sort.insertionSort;
+//package sort.insertionSort;
 
 public class BinaryInsertionSort {
 
 	/**
 	 * @param args
 	 */
-	//¶ÔË³Ğò±íL×öÕÛ°ë²åÈëÅÅĞò,ÀûÓÃÕÛ°ë²éÕÒ¿ìËÙÕÒµ½Òª²åÈëµÄÎ»ÖÃ
+	//å¯¹é¡ºåºè¡¨LåšæŠ˜åŠæ’å…¥æ’åº,åˆ©ç”¨æŠ˜åŠæŸ¥æ‰¾å¿«é€Ÿæ‰¾åˆ°è¦æ’å…¥çš„ä½ç½®
 	public static void binaryInsertSort(int[] L){
 		for(int i = 2; i <= L.length-1; i++){		
-			//ÀûÓÃÕÛ°ë²éÕÒÕÒµ½Òª²åÈëµÄÎ»ÖÃ
-			int low = 1, high = i-1;//ÔÚ1->i-1µÄÓĞĞò×ÓĞòÁĞÖĞ²åÈëµÚi¸öÔªËØ£¬Ê¹Ö®³ÉÎª1->iµÄÓĞĞò×ÓĞòÁĞ
-			L[0] = L[i];//Ôİ´æÒª²åÈëµÄÔªËØ
+			//åˆ©ç”¨æŠ˜åŠæŸ¥æ‰¾æ‰¾åˆ°è¦æ’å…¥çš„ä½ç½®
+			int low = 1, high = i-1;//åœ¨1->i-1çš„æœ‰åºå­åºåˆ—ä¸­æ’å…¥ç¬¬iä¸ªå…ƒç´ ï¼Œä½¿ä¹‹æˆä¸º1->içš„æœ‰åºå­åºåˆ—
+			L[0] = L[i];//æš‚å­˜è¦æ’å…¥çš„å…ƒç´ 
 			while(low <= high){
 				int mid = (low+high)/2;
 				if(L[0] < L[mid])
 					high = mid -1;
 				else
 					//L[0] >= L[mid]
-					low = mid+1;//µÈÓÚµ±³É´óÓÚ´¦Àí£¬ÕâÑùºó³öÏÖµÄÏàµÈÖµ¾Í»áÅÅÔÚºóÃæ£¬´Ó¶øµ½´ï¡°ÎÈ¶¨¡±
+					low = mid+1;//ç­‰äºå½“æˆå¤§äºå¤„ç†ï¼Œè¿™æ ·åå‡ºç°çš„ç›¸ç­‰å€¼å°±ä¼šæ’åœ¨åé¢ï¼Œä»è€Œåˆ°è¾¾â€œç¨³å®šâ€
 			}
-			//´ËÊ±high = low-1£¬ÇÒhigh+1¼´lowµÄÎ»ÖÃ¼´ÎªÒª²åÈëµÄÎ»ÖÃ
+			//æ­¤æ—¶high = low-1ï¼Œä¸”high+1å³lowçš„ä½ç½®å³ä¸ºè¦æ’å…¥çš„ä½ç½®
 			for(int j = i-1; j >= low; j--)
 				L[j+1] = L[j];
 			L[low] = L[0];
@@ -27,7 +27,7 @@ public class BinaryInsertionSort {
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] test = {0, 53, 27, 36, 15, 69, 42}; //0ºÅµ¥ÔªÎ´Ê¹ÓÃ
+		int[] test = {0, 53, 27, 36, 15, 69, 42}; //0å·å•å…ƒæœªä½¿ç”¨
 		binaryInsertSort(test);
 		for(int i = 1; i <= test.length-1; i++)
 			System.out.print(test[i]+" ");

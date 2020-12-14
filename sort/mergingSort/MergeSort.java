@@ -1,10 +1,10 @@
-package sort.mergingSort;
+//package sort.mergingSort;
 public class MergeSort {
 	/**
 	 * @param args
 	 */
 	public static void merge(int[] L, int s, int m, int n){
-		//½«ÓĞĞòµÄL[s...m]ºÍL[m+1...n]¹é²¢ÎªÓĞĞòµÄL[s...n],½èÓÃÁÙÊ±Êı×Ö£¨¶îÍâµÄ¸¨´æ£©
+		//å°†æœ‰åºçš„L[s...m]å’ŒL[m+1...n]å½’å¹¶ä¸ºæœ‰åºçš„L[s...n],å€Ÿç”¨ä¸´æ—¶æ•°å­—ï¼ˆé¢å¤–çš„è¾…å­˜ï¼‰
 		int i=s, j=m+1, k=0;
 		int[] tmp = new int[L.length];
 		for(k = s; i<=m && j<=n; k++){
@@ -13,30 +13,30 @@ public class MergeSort {
 			else
 				tmp[k] = L[j++];
 		}
-		//¸´ÖÆÊ£ÓàµÄÔªËØ
+		//å¤åˆ¶å‰©ä½™çš„å…ƒç´ 
 		while(i <= m)
 			tmp[k++] = L[i++];
 		while(j <= n)
 			tmp[k++] = L[j++];
 		
-		//½«ÁÙÊ±Êı×éÀïµÄÒÑ¾­ÅÅºÃĞòµÄÔªËØ·µ»Ø¸øL
+		//å°†ä¸´æ—¶æ•°ç»„é‡Œçš„å·²ç»æ’å¥½åºçš„å…ƒç´ è¿”å›ç»™L
 		for(k=s; k <= n; k++ )
 			L[k] = tmp[k];
 	}
-	//½«L[]¹é²¢ÅÅĞò
+	//å°†L[]å½’å¹¶æ’åº
 	public static void mergeSort(int[] L, int start, int end){
 		if(start < end){
-			int m = (start+end)/2;//Õû¸ö×ÓĞòÁĞ»áÖğ½¥Ò»·ÖÎª2£¬È»ºó2·ÖÎª4£¬4·ÖÎª8....£¬Ö÷ÒªÒÀÀµÓÚLµÄ³¤¶È£¬
-			//Ö±ÖÁÃ¿¸ö×ÓĞòÁĞ½öº¬ÓĞÒ»¸öÔªËØ£¬¾Í¿ªÊ¼ºÏ²¢
-			mergeSort(L, start, m);//µİ¹éµÄ½«L[start...m]¹é²¢ÎªÓĞĞòµÄL[start...m]
-			mergeSort(L, m+1, end);//µİ¹éµÄ½«L[m+1...end]¹é²¢ÎªÓĞĞòµÄL[m+1...end]
-			merge(L, start, m, end);//½«ÓĞĞòµÄL[start...m]ºÍL[m+1...end]¹é²¢µ½L[start...end]
+			int m = (start+end)/2;//æ•´ä¸ªå­åºåˆ—ä¼šé€æ¸ä¸€åˆ†ä¸º2ï¼Œç„¶å2åˆ†ä¸º4ï¼Œ4åˆ†ä¸º8....ï¼Œä¸»è¦ä¾èµ–äºLçš„é•¿åº¦ï¼Œ
+			//ç›´è‡³æ¯ä¸ªå­åºåˆ—ä»…å«æœ‰ä¸€ä¸ªå…ƒç´ ï¼Œå°±å¼€å§‹åˆå¹¶
+			mergeSort(L, start, m);//é€’å½’çš„å°†L[start...m]å½’å¹¶ä¸ºæœ‰åºçš„L[start...m]
+			mergeSort(L, m+1, end);//é€’å½’çš„å°†L[m+1...end]å½’å¹¶ä¸ºæœ‰åºçš„L[m+1...end]
+			merge(L, start, m, end);//å°†æœ‰åºçš„L[start...m]å’ŒL[m+1...end]å½’å¹¶åˆ°L[start...end]
 		}
-		//µ±start == endÊ±£¬ËµÃ÷´ËÊ±×ÓĞòÁĞÖĞÖ»ÓĞÒ»¸öÔªËØ£¬¼´ÔÚ´Ëºó£¬Ã¿2¸öµ¥ÔªËØ½«»áºÏ²¢³Éº¬ÓĞ2¸öÔªËØµÄ×ÓĞòÁĞ
+		//å½“start == endæ—¶ï¼Œè¯´æ˜æ­¤æ—¶å­åºåˆ—ä¸­åªæœ‰ä¸€ä¸ªå…ƒç´ ï¼Œå³åœ¨æ­¤åï¼Œæ¯2ä¸ªå•å…ƒç´ å°†ä¼šåˆå¹¶æˆå«æœ‰2ä¸ªå…ƒç´ çš„å­åºåˆ—
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] test = {0, 46, 55, 13, 42, 94, 5, 17, 70}; //0ºÅµ¥ÔªÎ´Ê¹ÓÃ
+		int[] test = {0, 46, 55, 13, 42, 94, 5, 17, 70}; //0å·å•å…ƒæœªä½¿ç”¨
 		mergeSort(test, 1, test.length-1);
 		for(int i = 1; i <= test.length-1; i++)
 			System.out.print(test[i]+" ");

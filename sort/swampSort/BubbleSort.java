@@ -1,14 +1,14 @@
-package sort.swampSort;
+//package sort.swampSort;
 
 public class BubbleSort {
 	/**
 	 * @param args
 	 */
-	//Ã°ÅİÅÅĞò
+	//å†’æ³¡æ’åº
 	public static void bubbleSort(int[] L){
-		for(int i = L.length-1; i > 1; i--){//i¿ØÖÆ±È½ÏµÄÌËÊı£¬±È½Ïn-1ÌË
+		for(int i = L.length-1; i > 1; i--){//iæ§åˆ¶æ¯”è¾ƒçš„è¶Ÿæ•°ï¼Œæ¯”è¾ƒn-1è¶Ÿ
 			for(int j = 1; j < i; j++){
-				if(L[j] > L[j+1]){//½»»»
+				if(L[j] > L[j+1]){//äº¤æ¢
 					L[0] = L[j+1];
 					L[j+1] = L[j];
 					L[j] = L[0];
@@ -18,7 +18,7 @@ public class BubbleSort {
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] test = {0, 25, 56, 49, 78, 11, 65, 41, 36}; //0ºÅµ¥ÔªÎ´Ê¹ÓÃ
+		int[] test = {0, 25, 56, 49, 78, 11, 65, 41, 36}; //0å·å•å…ƒæœªä½¿ç”¨
 		bubbleSort(test);
 		for(int i = 1; i <= test.length-1; i++)
 			System.out.print(test[i]+" ");

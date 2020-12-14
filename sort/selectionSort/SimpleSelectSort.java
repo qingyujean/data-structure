@@ -1,4 +1,4 @@
-package sort.selectionSort;
+//package sort.selectionSort;
 
 public class SimpleSelectSort {
 
@@ -15,12 +15,12 @@ public class SimpleSelectSort {
 		return min_k;
 	}
 	
-	//¶ÔË³Ğò±íL×ö¼òµ¥Ñ¡ÔñÅÅĞò
+	//å¯¹é¡ºåºè¡¨Låšç®€å•é€‰æ‹©æ’åº
 	public static void selectSort(int[] L){
-		//´ÓiºóÃæµÄ×ÓĞòÁĞÖĞ(¼´´Ói->nÖĞ)Ñ¡³öÒ»¸ömin²åÈëµ½iµÄÎ»ÖÃÉÏ
-		for(int i = 1; i < L.length-1; i++){//iµÄÈ¡ÖµÊÇ1...n-1
-			int j = selectMin(L, i);//´ÓL[i...n]ÀïÑ¡³öÒ»¸ömin£¬²¢·µ»ØÆäÏÂ±ê
-			if(j!=i){//½»»»L[i]ÓëL[j]
+		//ä»iåé¢çš„å­åºåˆ—ä¸­(å³ä»i->nä¸­)é€‰å‡ºä¸€ä¸ªminæ’å…¥åˆ°içš„ä½ç½®ä¸Š
+		for(int i = 1; i < L.length-1; i++){//içš„å–å€¼æ˜¯1...n-1
+			int j = selectMin(L, i);//ä»L[i...n]é‡Œé€‰å‡ºä¸€ä¸ªminï¼Œå¹¶è¿”å›å…¶ä¸‹æ ‡
+			if(j!=i){//äº¤æ¢L[i]ä¸L[j]
 				L[0] = L[i];
 				L[i] = L[j];
 				L[j] = L[0];
@@ -30,7 +30,7 @@ public class SimpleSelectSort {
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] test = {0, 8, 3, 9, 1, 6}; //0ºÅµ¥ÔªÎ´Ê¹ÓÃ
+		int[] test = {0, 8, 3, 9, 1, 6}; //0å·å•å…ƒæœªä½¿ç”¨
 		selectSort(test);
 		for(int i = 1; i <= test.length-1; i++)
 			System.out.print(test[i]+" ");
