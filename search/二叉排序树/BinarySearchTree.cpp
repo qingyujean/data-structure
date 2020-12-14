@@ -6,25 +6,25 @@
 typedef int status; 
 typedef int TElemType;
 typedef int KeyType;
-//¶¯Ì¬¶þ²æÁ´±í
+//åŠ¨æ€äºŒå‰é“¾è¡¨
 typedef struct BiTNode{
 	TElemType data;
 	struct BiTNode *lchild, *rchild;
 }BiTNode, *BiTree;
 
-bool isFind = false;//±êÊ¶ÊÇ·ñ²éÕÒµ½
+bool isFind = false;//æ ‡è¯†æ˜¯å¦æŸ¥æ‰¾åˆ°
 
-//ÔÚ¸ùÖ¸ÕëTËùÖ¸µÄ¶þ²æÅÅÐòÊ÷ÖÐµÝ¹éµÄ²éÕÒÆä¹Ø¼ü×ÖµÈÓÚkeyµÄÊý¾ÝÔªËØ£¬Èô²éÕÒ³É¹¦£¬ÔòÖ¸ÕëpÖ¸Ïò¸ÃÊý¾ÝÔªËØµÄ½áµã£¬²¢·µ»ØTrue£¬£¬·ñÔò·µ»ØFalse
-//Ö¸Õëf×ÜÖ¸ÏòpµÄË«Ç×£¬Æä³õÊ¼ÖµÎªNULL
+//åœ¨æ ¹æŒ‡é’ˆTæ‰€æŒ‡çš„äºŒå‰æŽ’åºæ ‘ä¸­é€’å½’çš„æŸ¥æ‰¾å…¶å…³é”®å­—ç­‰äºŽkeyçš„æ•°æ®å…ƒç´ ï¼Œè‹¥æŸ¥æ‰¾æˆåŠŸï¼Œåˆ™æŒ‡é’ˆpæŒ‡å‘è¯¥æ•°æ®å…ƒç´ çš„ç»“ç‚¹ï¼Œå¹¶è¿”å›žTrueï¼Œï¼Œå¦åˆ™è¿”å›žFalse
+//æŒ‡é’ˆfæ€»æŒ‡å‘pçš„åŒäº²ï¼Œå…¶åˆå§‹å€¼ä¸ºNULL
 status searchBST(BiTree T, KeyType key, BiTree &f, BiTree &p){
 	if(!T){
-		p = T;//Ê¹PÖ¸ÏòNULL
-		isFind = false;//±êÊ¶Ã»ÓÐ²éÕÒµ½
+		p = T;//ä½¿PæŒ‡å‘NULL
+		isFind = false;//æ ‡è¯†æ²¡æœ‰æŸ¥æ‰¾åˆ°
 		return FALSE;
 	}
 	if(T->data == key){
 		p = T;
-		isFind = true;//±êÊ¶ÒÑ¾­²éÕÒµ½
+		isFind = true;//æ ‡è¯†å·²ç»æŸ¥æ‰¾åˆ°
 		return TRUE;
 	}else if(T->data > key){
 		f = T; 
@@ -38,14 +38,14 @@ status searchBST(BiTree T, KeyType key, BiTree &f, BiTree &p){
 status insertBST(BiTree &T, KeyType key){
 	BiTNode *p;
 	BiTNode *f = NULL;
-	if(searchBST(T, key, f, p)){//ÕÒµ½ÁË
+	if(searchBST(T, key, f, p)){//æ‰¾åˆ°äº†
 		return TRUE;
-	}else{//Ã»ÕÒµ½£¬¼´²»´æÔÚ£¬ÔòÒª²åÈë¸ÃÖµ
-		//printf("²éÕÒ&dÊ§°Ü£¬ÔòÔÚÔ­¶þ²æÅÅÐòÊ÷ÖÐ²åÈë¸ÃÖµ\n");
+	}else{//æ²¡æ‰¾åˆ°ï¼Œå³ä¸å­˜åœ¨ï¼Œåˆ™è¦æ’å…¥è¯¥å€¼
+		//printf("æŸ¥æ‰¾&då¤±è´¥ï¼Œåˆ™åœ¨åŽŸäºŒå‰æŽ’åºæ ‘ä¸­æ’å…¥è¯¥å€¼\n");
 		p = (BiTNode *)malloc(sizeof(BiTNode));
 		p->data = key;
 		p->lchild = p->rchild = NULL;
-		if(!f){//fÎªNULL£¬ËµÃ÷¶þ²æÅÅÐòÊ÷»¹ÊÇÒ»¿Ã¿ÕÊ÷
+		if(!f){//fä¸ºNULLï¼Œè¯´æ˜ŽäºŒå‰æŽ’åºæ ‘è¿˜æ˜¯ä¸€æ£µç©ºæ ‘
 			T = p;
 		}else if(key > f->data){
 			f->rchild = p;
@@ -57,45 +57,45 @@ status insertBST(BiTree &T, KeyType key){
 }
 
 status deleteBST(BiTree &T, KeyType key){
-	BiTNode *p, *q;//q½«´úÌæpÔÚË«Ç×fÏÂµÄÎ»ÖÃ
+	BiTNode *p, *q;//qå°†ä»£æ›¿påœ¨åŒäº²fä¸‹çš„ä½ç½®
 	BiTNode *f = NULL;
-	if(!searchBST(T, key, f, p)){//Ã»ÕÒµ½
+	if(!searchBST(T, key, f, p)){//æ²¡æ‰¾åˆ°
 		return FALSE;
-	}else{//ÕÒµ½ÁË£¬ÔòÒªÖ´ÐÐÉ¾³ý²Ù×÷
-		if(!f){//fÎªNULL£¬ËµÃ÷ÒªÉ¾³ýµÄÊÇ¶þ²æÅÅÐòÊ÷µÄ¸ù½Úµã,Ê¾Àý£º79
-			if(p->lchild == NULL && p->rchild == NULL){//pÊÇÒ¶×Ó½áµã£¬Ê¾Àý£º5£¬68, 89£¬120
+	}else{//æ‰¾åˆ°äº†ï¼Œåˆ™è¦æ‰§è¡Œåˆ é™¤æ“ä½œ
+		if(!f){//fä¸ºNULLï¼Œè¯´æ˜Žè¦åˆ é™¤çš„æ˜¯äºŒå‰æŽ’åºæ ‘çš„æ ¹èŠ‚ç‚¹,ç¤ºä¾‹ï¼š79
+			if(p->lchild == NULL && p->rchild == NULL){//pæ˜¯å¶å­ç»“ç‚¹ï¼Œç¤ºä¾‹ï¼š5ï¼Œ68, 89ï¼Œ120
 				T = NULL;
-			}else if(p->lchild == NULL){//pÖ»ÓÐÓÒ×ÓÊ÷,Ê¾Àý:100,88
+			}else if(p->lchild == NULL){//påªæœ‰å³å­æ ‘,ç¤ºä¾‹:100,88
 				T = p->rchild;
-			}else if(p->rchild == NULL){//pÖ»ÓÐ×ó×ÓÊ÷,Ê¾Àý:17
+			}else if(p->rchild == NULL){//påªæœ‰å·¦å­æ ‘,ç¤ºä¾‹:17
 				T = p->lchild;				
-			}else{//PµÄÁ½¿Ã×ÓÊ÷¾ù²»Îª¿Õ
-				//ÈÃpµÄ×ó×ÓÊ÷µÄ¸ù½ÚµãÎªÐÂµÄ¸ù½Úµã£¬ÓÒ×ÓÊ÷µÄ¸ù½ÚµãÁ´½Óµ½×ó×ÓÊ÷µÄ×îÓÒÏÂ¶Ë
+			}else{//Pçš„ä¸¤æ£µå­æ ‘å‡ä¸ä¸ºç©º
+				//è®©pçš„å·¦å­æ ‘çš„æ ¹èŠ‚ç‚¹ä¸ºæ–°çš„æ ¹èŠ‚ç‚¹ï¼Œå³å­æ ‘çš„æ ¹èŠ‚ç‚¹é“¾æŽ¥åˆ°å·¦å­æ ‘çš„æœ€å³ä¸‹ç«¯
 				T = p->lchild;
 				q = T;
 				while(q && q->rchild)
 					q = q->rchild;
-				//qÖ¸ÏòpµÄ×ó×ÓÊ÷µÄ×îÓÒÏÂ¶Ë
+				//qæŒ‡å‘pçš„å·¦å­æ ‘çš„æœ€å³ä¸‹ç«¯
 				if(q)
 					q->rchild = p->rchild;
 			}
 
 		}else{
-			if(p->lchild == NULL && p->rchild == NULL){//pÊÇÒ¶×Ó½áµã£¬Ê¾Àý£º5£¬68, 89£¬120
+			if(p->lchild == NULL && p->rchild == NULL){//pæ˜¯å¶å­ç»“ç‚¹ï¼Œç¤ºä¾‹ï¼š5ï¼Œ68, 89ï¼Œ120
 				q = NULL;
-			}else if(p->lchild == NULL){//pÖ»ÓÐÓÒ×ÓÊ÷,Ê¾Àý:100,88
+			}else if(p->lchild == NULL){//påªæœ‰å³å­æ ‘,ç¤ºä¾‹:100,88
 				q = p->rchild;
-			}else if(p->rchild == NULL){//pÖ»ÓÐ×ó×ÓÊ÷,Ê¾Àý:17
+			}else if(p->rchild == NULL){//påªæœ‰å·¦å­æ ‘,ç¤ºä¾‹:17
 				q = p->lchild;				
-			}else{//PµÄÁ½¿Ã×ÓÊ÷¾ù²»Îª¿Õ,Ê¾Àý:62,90,
-				//½«pµÄ×ó×ÓÊ÷µÄ¸ù½Úµã´úÌæp£¬pµÄÓÒ×ÓÊ÷µ½pµÄ×ó×ÓÊ÷µÄ×îÓÒÏÂ¶Ë
+			}else{//Pçš„ä¸¤æ£µå­æ ‘å‡ä¸ä¸ºç©º,ç¤ºä¾‹:62,90,
+				//å°†pçš„å·¦å­æ ‘çš„æ ¹èŠ‚ç‚¹ä»£æ›¿pï¼Œpçš„å³å­æ ‘åˆ°pçš„å·¦å­æ ‘çš„æœ€å³ä¸‹ç«¯
 				q = p->lchild;
 				while(q->rchild){
 					q = q->rchild;
 				}
-				q->rchild = p->rchild;//pµÄÓÒ×ÓÊ÷ÒÆµ½×ó×ÓÊ÷µÄ×îÓÒÏÂ¶Ë
+				q->rchild = p->rchild;//pçš„å³å­æ ‘ç§»åˆ°å·¦å­æ ‘çš„æœ€å³ä¸‹ç«¯
 			}
-			//ÖØÐÂÖ¸ÅÉpµÄË«Ç×µÄº¢×Ó£¬²¢É¾³ýp½áµã
+			//é‡æ–°æŒ‡æ´¾pçš„åŒäº²çš„å­©å­ï¼Œå¹¶åˆ é™¤pç»“ç‚¹
 			if(f->lchild == p)
 				f->lchild = q;
 			else if(f->rchild == p)
@@ -107,7 +107,7 @@ status deleteBST(BiTree &T, KeyType key){
 }
 
 
-//ÖÐÐò±éÀú´òÓ¡¶þ²æÊ÷µÄµÝ¹éËã·¨£¨×ó¡¢¸ù¡¢ÓÒ£©
+//ä¸­åºéåŽ†æ‰“å°äºŒå‰æ ‘çš„é€’å½’ç®—æ³•ï¼ˆå·¦ã€æ ¹ã€å³ï¼‰
 void inOrderPrint(BiTree T){
 	if(T){
 		inOrderPrint(T->lchild);
@@ -116,57 +116,60 @@ void inOrderPrint(BiTree T){
 	}
 	
 }
-void main(){
-	BiTree T;
-	T = NULL;//¶ÔÊ÷³õÊ¼»¯£ºÖØÒª£¡£¡£¡
 
-	//²âÊÔ£¬°´½á¶¨¹Ø¼ü×ÖÐòÁÐ79£¬62£¬68£¬90£¬88£¬89£¬17£¬5£¬100£¬120Éú³É¶þ²æÅÅÐòÊ÷
+int main(){
+	BiTree T;
+	T = NULL;//å¯¹æ ‘åˆå§‹åŒ–ï¼šé‡è¦ï¼ï¼ï¼
+
+	//æµ‹è¯•ï¼ŒæŒ‰ç»“å®šå…³é”®å­—åºåˆ—79ï¼Œ62ï¼Œ68ï¼Œ90ï¼Œ88ï¼Œ89ï¼Œ17ï¼Œ5ï¼Œ100ï¼Œ120ç”ŸæˆäºŒå‰æŽ’åºæ ‘
 	KeyType keyArray[] = {79, 62, 68, 90, 88, 89, 17, 5, 100, 120};
 	for(int i = 0; i < 10; i++){
 		insertBST(T, keyArray[i]);
 	}
-	printf("ÖÐÐò±éÀú¸Ã¶þ²æÊ÷Îª£º");
+	printf("ä¸­åºéåŽ†è¯¥äºŒå‰æ ‘ä¸ºï¼š");
 	inOrderPrint(T);
 	printf("\n");
 
-	
-	//²éÕÒÊ§°ÜÔò²åÈë
+	/*
+	//æŸ¥æ‰¾å¤±è´¥åˆ™æ’å…¥
 	int test = 1;
-	while(test <= 3){//×ö2´Î²âÊÔ
-		printf("\nÇëÊäÈëÒª²éÕÒµÄ¹Ø¼ü×Ökey=");
+	while(test <= 3){//åš2æ¬¡æµ‹è¯•
+		printf("\nè¯·è¾“å…¥è¦æŸ¥æ‰¾çš„å…³é”®å­—key=");
 		KeyType key;
 		scanf("%d", &key);
 		insertBST(T, key);
 		if(isFind){
-			printf("²éÕÒ%d³É¹¦\n", key);
+			printf("æŸ¥æ‰¾%dæˆåŠŸ\n", key);
 		}else{
-			printf("²éÕÒ%dÊ§°Ü£¬ÔòÔÚÔ­¶þ²æÅÅÐòÊ÷ÖÐ²åÈë¸ÃÖµ\n", key);		
-			printf("²åÈë¹Ø¼ü×Ö%dºó£¬ÖÐÐò±éÀú¸Ã¶þ²æÊ÷Îª£º", key);
+			printf("æŸ¥æ‰¾%då¤±è´¥ï¼Œåˆ™åœ¨åŽŸäºŒå‰æŽ’åºæ ‘ä¸­æ’å…¥è¯¥å€¼\n", key);		
+			printf("æ’å…¥å…³é”®å­—%dåŽï¼Œä¸­åºéåŽ†è¯¥äºŒå‰æ ‘ä¸ºï¼š", key);
 			inOrderPrint(T);
 			printf("\n");
 		}
 		test++;
 	}
-	
+	*/
 
 	
-	//²éÕÒ³É¹¦ÔòÉ¾³ý
-	test = 1;
-	while(test <= 3){//×ö3´Î²âÊÔ
-	    printf("\nÇëÊäÈëÒª²éÕÒµÄ¹Ø¼ü×Ökey=");
+	//æŸ¥æ‰¾æˆåŠŸåˆ™åˆ é™¤
+	int test = 1;
+	while(test <= 3){//åš3æ¬¡æµ‹è¯•
+	    printf("\nè¯·è¾“å…¥è¦æŸ¥æ‰¾çš„å…³é”®å­—key=");
 		KeyType key;
 		scanf("%d", &key);
 		deleteBST(T, key);
 		if(isFind){
-			printf("²éÕÒ%d³É¹¦,ÔòÉ¾³ý¸Ã¹Ø¼ü×Ö\n", key);
-			printf("É¾³ý¹Ø¼ü×Ö%dºó£¬ÖÐÐò±éÀú¸Ã¶þ²æÊ÷Îª£º", key);
+			printf("æŸ¥æ‰¾%dæˆåŠŸ,åˆ™åˆ é™¤è¯¥å…³é”®å­—\n", key);
+			printf("åˆ é™¤å…³é”®å­—%dåŽï¼Œä¸­åºéåŽ†è¯¥äºŒå‰æ ‘ä¸ºï¼š", key);
 			inOrderPrint(T);
 			printf("\n");
 		}else{
-			printf("²éÕÒ%dÊ§°Ü\n", key);		
+			printf("æŸ¥æ‰¾%då¤±è´¥\n", key);		
 		}
 		test++;
 	}
+	
+	return 0;
 }
 
 
