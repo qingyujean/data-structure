@@ -1,23 +1,23 @@
-package search;
+//package search;
 
 public class StaticSearch {
 
 	/**
 	 * @param args
 	 */
-	//ÔÚË³Ğò±íSTÖĞË³Ğò²éÕÒÆä¹Ø¼ü×ÖµÈÓÚkeyµÄÊı¾İÔªËØ£¬ÈôÕÒµ½£¬Ôòº¯ÊıÖµÎª¸ÃÔªËØÔÚ±íÖĞµÄÎ»ÖÃ£¬·ñÔò·µ»Ø0
-	public static int searchSeq(int[] st, int key){//st±íµÄ0ºÅµ¥Ôª²»Ê¹ÓÃ
-		//´ÓºóÍùÇ°ÕÒ£¬²¢ÔÚ0ºÅµ¥ÔªÉèÖÃ"¼àÊÓÉÚ"	
+	//åœ¨é¡ºåºè¡¨STä¸­é¡ºåºæŸ¥æ‰¾å…¶å…³é”®å­—ç­‰äºkeyçš„æ•°æ®å…ƒç´ ï¼Œè‹¥æ‰¾åˆ°ï¼Œåˆ™å‡½æ•°å€¼ä¸ºè¯¥å…ƒç´ åœ¨è¡¨ä¸­çš„ä½ç½®ï¼Œå¦åˆ™è¿”å›0
+	public static int searchSeq(int[] st, int key){//stè¡¨çš„0å·å•å…ƒä¸ä½¿ç”¨
+		//ä»åå¾€å‰æ‰¾ï¼Œå¹¶åœ¨0å·å•å…ƒè®¾ç½®"ç›‘è§†å“¨"	
 		int i = st.length - 1;
-		st[0] = key;//ÉèÖÃ¼àÊÓÉÚ
+		st[0] = key;//è®¾ç½®ç›‘è§†å“¨
 		while(st[i] != key){
 				i--;
 		}
 		return i;
 	}
 	
-	//ÔÚÓĞĞò±ístÖĞÕÛ°ë²éÕÒÆä¹Ø¼ü×ÖµÈÓÚkeyµÄÊı¾İÔªËØ£¬ÈôÕÒµ½£¬Ôòº¯ÊıÖµÎª¸ÃÔªËØÔÚ±íÖĞµÄÎ»ÖÃ£¬·ñÔò·µ»Ø0
-	public int searchBin(int[] st, int key){//st±íµÄ0ºÅµ¥Ôª²»Ê¹ÓÃ
+	//åœ¨æœ‰åºè¡¨stä¸­æŠ˜åŠæŸ¥æ‰¾å…¶å…³é”®å­—ç­‰äºkeyçš„æ•°æ®å…ƒç´ ï¼Œè‹¥æ‰¾åˆ°ï¼Œåˆ™å‡½æ•°å€¼ä¸ºè¯¥å…ƒç´ åœ¨è¡¨ä¸­çš„ä½ç½®ï¼Œå¦åˆ™è¿”å›0
+	public int searchBin(int[] st, int key){//stè¡¨çš„0å·å•å…ƒä¸ä½¿ç”¨
 		int low = 1, high = st.length - 1, mid = (low + high)/2;
 		while(low <= high){
 			if(st[mid] == key)
@@ -28,11 +28,11 @@ public class StaticSearch {
 				//st[mid] < key
 				low = mid + 1;
 		}
-		return 0;//low > highÊ±±íÃ÷²éÕÒÊ§°Ü
+		return 0;//low > highæ—¶è¡¨æ˜æŸ¥æ‰¾å¤±è´¥
 	}
 	
-	public static int searchIndex(int[][] index, int[] st, int key){//Îª·½±ã£¬index[],st[]¾ùÊ¹ÓÃ0ºÅµ¥Ôª
-		//ÕÛ°ë²éÕÒË÷Òı±í
+	public static int searchIndex(int[][] index, int[] st, int key){//ä¸ºæ–¹ä¾¿ï¼Œindex[],st[]å‡ä½¿ç”¨0å·å•å…ƒ
+		//æŠ˜åŠæŸ¥æ‰¾ç´¢å¼•è¡¨
 		int low = 0, high = index[0].length - 1;
 		int block = index[0].length, elemsInBlock = st.length / block;
 		int start, mid = 0;
@@ -49,7 +49,7 @@ public class StaticSearch {
 		}
 		start = index[1][low];
 		
-		//´ÓstartÎ»ÖÃ¿ªÊ¼Ë³Ğò²éÕÒ
+		//ä»startä½ç½®å¼€å§‹é¡ºåºæŸ¥æ‰¾
 		int i = 0;
 		while(i < elemsInBlock && st[start+i] != key){
 			i++;
@@ -62,60 +62,61 @@ public class StaticSearch {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		/*
-		//Ë³Ğò²éÕÒ²âÊÔ
-		int st[] = {0, 10, 20, 40, 80, 30, 60, 25};//0ºÅµ¥Ôª²»Ê¹ÓÃ
+		//é¡ºåºæŸ¥æ‰¾æµ‹è¯•
+		int st[] = {0, 10, 20, 40, 80, 30, 60, 25};//0å·å•å…ƒä¸ä½¿ç”¨
 		int key = 75;
 		int result = searchSeq(st, key);
 		if(result > 0)
-			System.out.println("²éÕÒ" + key + "³É¹¦,ÔÚ²éÕÒ±íÖĞµÄÎ»ÖÃÊÇ" + result);
+			System.out.println("æŸ¥æ‰¾" + key + "æˆåŠŸ,åœ¨æŸ¥æ‰¾è¡¨ä¸­çš„ä½ç½®æ˜¯" + result);
 		else
-			System.out.println("²éÕÒ" + key + "Ê§°Ü");
+			System.out.println("æŸ¥æ‰¾" + key + "å¤±è´¥");
 		
 		key = 80;
 		result = searchSeq(st, key);
 		if(result > 0)
-			System.out.println("²éÕÒ" + key + "³É¹¦,ÔÚ²éÕÒ±íÖĞµÄÎ»ÖÃÊÇ" + result);
+			System.out.println("æŸ¥æ‰¾" + key + "æˆåŠŸ,åœ¨æŸ¥æ‰¾è¡¨ä¸­çš„ä½ç½®æ˜¯" + result);
 		else
-			System.out.println("²éÕÒ" + key + "Ê§°Ü");
+			System.out.println("æŸ¥æ‰¾" + key + "å¤±è´¥");
 		*/
 		
 		/*
-		//ÓĞĞò±íµÄ¶ş·Ö²éÕÒ²âÊÔ
-		int st[] = {0, 8, 17, 25, 44, 68, 77, 98, 100, 115, 125};//0ºÅµ¥Ôª²»Ê¹ÓÃ
+		//æœ‰åºè¡¨çš„äºŒåˆ†æŸ¥æ‰¾æµ‹è¯•
+		int st[] = {0, 8, 17, 25, 44, 68, 77, 98, 100, 115, 125};//0å·å•å…ƒä¸ä½¿ç”¨
 		int key = 17;
 		int result = searchSeq(st, key);
 		if(result > 0)
-			System.out.println("²éÕÒ" + key + "³É¹¦,ÔÚ²éÕÒ±íÖĞµÄÎ»ÖÃÊÇ" + result);
+			System.out.println("æŸ¥æ‰¾" + key + "æˆåŠŸ,åœ¨æŸ¥æ‰¾è¡¨ä¸­çš„ä½ç½®æ˜¯" + result);
 		else
-			System.out.println("²éÕÒ" + key + "Ê§°Ü");
+			System.out.println("æŸ¥æ‰¾" + key + "å¤±è´¥");
 		
 		key = 120;
 		result = searchSeq(st, key);
 		if(result > 0)
-			System.out.println("²éÕÒ" + key + "³É¹¦,ÔÚ²éÕÒ±íÖĞµÄÎ»ÖÃÊÇ" + result);
+			System.out.println("æŸ¥æ‰¾" + key + "æˆåŠŸ,åœ¨æŸ¥æ‰¾è¡¨ä¸­çš„ä½ç½®æ˜¯" + result);
 		else
-			System.out.println("²éÕÒ" + key + "Ê§°Ü");
+			System.out.println("æŸ¥æ‰¾" + key + "å¤±è´¥");
 		*/
 		
 		
 		
-		//Ë÷ÒıË³Ğò²éÕÒ£¬ÓÖ½Ğ·Ö¿é²éÕÒ£¬ÊÇË³Ğò²éÕÒµÄÒ»ÖÖ¸Ä½ø·½·¨£¬¿é¼ä¿ÉÊ¹ÓÃÕÛ°ë²éÕÒ£¬¿éÄÚÖ»ÄÜÊÇË³Ğò²éÕÒ
+		//ç´¢å¼•é¡ºåºæŸ¥æ‰¾ï¼Œåˆå«åˆ†å—æŸ¥æ‰¾ï¼Œæ˜¯é¡ºåºæŸ¥æ‰¾çš„ä¸€ç§æ”¹è¿›æ–¹æ³•ï¼Œå—é—´å¯ä½¿ç”¨æŠ˜åŠæŸ¥æ‰¾ï¼Œå—å†…åªèƒ½æ˜¯é¡ºåºæŸ¥æ‰¾
 		int[][] index = {{20, 53, 89},
 				         {0, 5, 10}
-		};//Ë÷Òı±í
-		int[] st = {18, 12, 8, 5, 20, 51, 36, 22, 29, 53, 89, 60, 72, 66, 76};//²éÕÒ±í
+		};//ç´¢å¼•è¡¨
+		int[] st = {18, 12, 8, 5, 20, 51, 36, 22, 29, 53, 89, 60, 72, 66, 76};//æŸ¥æ‰¾è¡¨
 		int key = 22;
 		int result = searchIndex(index, st, key);
 		if(result > -1)
-			System.out.println("²éÕÒ" + key + "³É¹¦,ÔÚ²éÕÒ±íÖĞµÄÎ»ÖÃÊÇ" + result);
+			System.out.println("æŸ¥æ‰¾" + key + "æˆåŠŸ,åœ¨æŸ¥æ‰¾è¡¨ä¸­çš„ä½ç½®æ˜¯" + result);
 		else
-			System.out.println("²éÕÒ" + key + "Ê§°Ü");
+			System.out.println("æŸ¥æ‰¾" + key + "å¤±è´¥");
 		key = 6;
 		result = searchIndex(index, st, key);
 		if(result > -1)
-			System.out.println("²éÕÒ" + key + "³É¹¦,ÔÚ²éÕÒ±íÖĞµÄÎ»ÖÃÊÇ" + result);
+			System.out.println("æŸ¥æ‰¾" + key + "æˆåŠŸ,åœ¨æŸ¥æ‰¾è¡¨ä¸­çš„ä½ç½®æ˜¯" + result);
 		else
-			System.out.println("²éÕÒ" + key + "Ê§°Ü");
+			System.out.println("æŸ¥æ‰¾" + key + "å¤±è´¥");
+		
 	}
 
 }
