@@ -39,7 +39,7 @@ public class StaticSearch {
 		while(low < high){
 			mid = (low + high)/2;		
 			if(index[0][mid] == key){
-				start = mid;
+				low = mid;
 				break;
 			}else if(index[0][mid] > key)
 				high = mid;
